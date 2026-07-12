@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hisobotlar — UzTenantBill</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="index.html" class="logo">
+        <span id="logo-container"></span>
+        <span>UzTenantBill</span>
+      </a>
+      <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="buildings.html">Binolar</a>
+        <a href="tenants.html">Ijarachilar</a>
+        <a href="billing.html">Billing</a>
+        <a href="reports.html" class="active">Hisobotlar</a>
+      </div>
+      <div id="nav-user"></div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page-header">
+      <div>
+        <h1 style="margin:0; font-size:28px; font-weight:800;">Hisobotlar va eksport</h1>
+        <p style="margin:4px 0 0; color:#64748b;">Professional enterprise reports • 2026</p>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:22px;">
+      <div class="card">
+        <div class="card-body">
+          <div style="font-size:34px; margin-bottom:4px;">📄</div>
+          <strong style="font-size:17px;">PDF hisobot</strong>
+          <p style="font-size:13.5px; color:#64748b; margin:8px 0 16px;">Barcha binolar, yig'ish darajasi, RUBS va qarzlar.</p>
+          <button onclick="window.UzApp.generateReport('pdf')" class="btn btn-primary" style="width:100%;">Yuklab olish PDF</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-body">
+          <div style="font-size:34px; margin-bottom:4px;">📊</div>
+          <strong style="font-size:17px;">Excel (XLSX)</strong>
+          <p style="font-size:13.5px; color:#64748b; margin:8px 0 16px;">Buxgalteriya uchun to'liq ma'lumotlar jadvali.</p>
+          <button onclick="window.UzApp.generateReport('excel')" class="btn btn-primary" style="width:100%;">Yuklab olish Excel</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-body">
+          <div style="font-size:34px; margin-bottom:4px;">🔗</div>
+          <strong style="font-size:17px;">1C:Enterprise</strong>
+          <p style="font-size:13.5px; color:#64748b; margin:8px 0 16px;">O'zbekiston uchun XML eksport + CAM reconciliation.</p>
+          <button onclick="window.UzApp.generateReport('1c')" class="btn btn-primary" style="width:100%;">1C eksport</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:26px;">
+      <div class="card-header"><strong>CAM Reconciliation (Yardi / MRI uslubi)</strong></div>
+      <div class="card-body">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
+          <div>
+            <div style="margin-bottom:14px; font-size:14px; font-weight:600;">2026-07 yilgi natijalar</div>
+            <table style="width:100%; font-size:14px;">
+              <tr><td style="padding:6px 0;">Umumiy hisob</td><td style="text-align:right; font-weight:700;">142.4M UZS</td></tr>
+              <tr><td style="padding:6px 0;">Yig'ildi</td><td style="text-align:right; font-weight:700; color:#10b981;">117.3M UZS</td></tr>
+              <tr><td style="padding:6px 0;">Kech to'lovlar</td><td style="text-align:right; font-weight:700; color:#ef4444;">25.1M UZS</td></tr>
+              <tr><td style="padding:6px 0; border-top:1px solid #e2e8f0;">O'rtacha yig'ish</td><td style="text-align:right; font-weight:700; color:#10b981;">82.4%</td></tr>
+            </table>
+          </div>
+          <div>
+            <button onclick="window.UzApp.generateReport('cam')" class="btn btn-secondary" style="width:100%; margin-bottom:10px;">CAM hisobotini yaratish</button>
+            <div style="font-size:12.5px; color:#64748b; line-height:1.5;">
+              Yardi, MRI va Re-Leased uslubida to'liq reconciliation.<br>
+              Har bir bino uchun expense pool va allocation.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECENT DOWNLOADS - CLEAR VISIBILITY -->
+    <div class="card" style="margin-top:22px;" id="recent-downloads-card">
+      <div class="card-header">
+        <strong>✅ So'nggi yuklangan hisobotlar</strong>
+        <span style="font-size:12px; color:#64748b;">(Brauzer yuklamalar papkasiga tushadi)</span>
+      </div>
+      <div class="card-body" id="recent-downloads">
+        <div style="font-size:13.5px; color:#64748b;">Hali hisobot yuklanmagan. Yuqoridagi tugmalardan birini bosing.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/logo.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const user = window.UzAuth.protectPage();
+    if (user) {
+      window.UzAuth.updateNavbar();
+      const logoContainer = document.getElementById('logo-container');
+      if (logoContainer && window.UzLogo) logoContainer.innerHTML = window.UzLogo.getLogoSVG(28);
+
+      // Apply role class for CSS hiding
+      document.body.classList.add('role-' + user.role);
+      if (user.role === 'tenant') {
+        document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
+      }
+
+      setTimeout(() => { if (window.UzApp && window.UzApp.initApp) window.UzApp.initApp(); }, 80);
+      setTimeout(showRecentDownloads, 350);
+    }
+
+    function showRecentDownloads() {
+      const container = document.getElementById('recent-downloads');
+      if (!container) return;
+
+      try {
+        const recent = JSON.parse(localStorage.getItem('uztenantbill_downloads') || '[]');
+        if (recent.length === 0) {
+          container.innerHTML = `<div style="font-size:13.5px; color:#64748b;">Hali hisobot yuklanmagan. Yuqoridagi tugmalardan birini bosing.</div>`;
+          return;
+        }
+
+        let html = '<div style="font-size:13.5px;">';
+        recent.forEach(item => {
+          const d = new Date(item.date).toLocaleTimeString('uz-UZ', {hour:'2-digit', minute:'2-digit'});
+          html += `<div style="margin-bottom:6px; padding:4px 0; border-bottom:1px solid #e2e8f0;">✅ <strong>${item.filename}</strong> <span style="color:#64748b; font-size:12px;">(${d})</span></div>`;
+        });
+        html += '</div><div style="margin-top:8px; font-size:11.5px; color:#64748b;">Fayllar brauzeringizning "Yuklamalar" papkasida saqlanadi.</div>';
+        container.innerHTML = html;
+      } catch(e) {}
+    }
+  </script>
+</body>
+</html>
