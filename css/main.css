@@ -1,0 +1,389 @@
+/* ============================================
+   UzTenantBill — Enterprise UI/UX 2026 (FINAL v19)
+   Clean, professional, perfectly centered landing
+   Strong animations + real 2026 Tashkent data
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;family=Inter:wght@700&amp;display=swap');
+
+:root {
+  --primary: #0f172a;
+  --accent: #0ea5e9;
+  --accent-dark: #0284c8;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --text: #0f172a;
+  --muted: #64748b;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 10px 15px -3px rgb(15 23 42 / 0.06), 0 4px 6px -4px rgb(15 23 42 / 0.06);
+  
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* ======================== POWER KEYFRAMES ======================== */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes metricRise { from { opacity: 0; transform: translateY(24px) scale(0.82); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes tableRowStagger { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes logoPop { 0% { opacity: 0; transform: scale(0.5) rotate(-16deg); } 55% { transform: scale(1.22) rotate(4deg); } 100% { transform: scale(1) rotate(0); } }
+@keyframes buttonPress { 0% { transform: scale(1); } 35% { transform: scale(0.88); } 100% { transform: scale(1); } }
+@keyframes roleSwitch { from { opacity: 0.35; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
+
+/* ======================== BASE ======================== */
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ======================== GLOBAL CENTERING ======================== */
+.nav-content,
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* ======================== NAV + LOGO ======================== */
+.navbar {
+  background: var(--primary);
+  padding: 12px 0;
+  border-bottom: 1px solid #1e2937;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+}
+
+.nav-public {
+  background: #0f172a;
+  border-bottom: 1px solid #1e2937;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+}
+
+.logo svg {
+  transition: transform 0.48s var(--ease-spring);
+}
+
+.logo:hover svg {
+  transform: scale(1.16) rotate(6deg);
+}
+
+.logo:active svg {
+  animation: logoPop 0.55s var(--ease-spring);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  color: #cbd5e1;
+  font-size: 14.5px;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s var(--ease-out);
+}
+
+.nav-links a:hover { color: white; }
+
+.nav-links a.active:after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #38bdf8;
+  border-radius: 2px;
+  animation: fadeInUp 0.22s ease forwards;
+}
+
+/* ======================== BUTTONS ======================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 23px;
+  font-size: 14.5px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-base);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #0ea5e9, #0284c8);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgb(14 165 233 / 0.35);
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3.2px);
+  box-shadow: 0 18px 28px -4px rgb(14 165 233 / 0.58);
+}
+
+.btn-primary:active {
+  transform: scale(0.91);
+  animation: buttonPress 0.28s var(--ease-out);
+}
+
+.btn-secondary {
+  background: white;
+  color: #0f172a;
+  border-color: #e2e8f0;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+}
+
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+
+.btn-outline { background: transparent; color: var(--accent); border-color: var(--accent); }
+.btn-outline:hover { background: #f0f9ff; transform: translateY(-1.4px); }
+
+/* ======================== CARDS ======================== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-7.5px);
+  box-shadow: 0 30px 48px -8px rgb(15 23 42 / 0.17), 0 12px 16px -4px rgb(15 23 42 / 0.1);
+}
+
+.card-body {
+  padding: 22px 26px;
+}
+
+/* ======================== LANDING HERO (CLEAN & CENTERED) ======================== */
+.hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+  color: white;
+  padding: 110px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 56px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -3.6px;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  font-size: 19px;
+  color: #94a3b8;
+  max-width: 620px;
+  margin-bottom: 36px;
+  line-height: 1.55;
+}
+
+.stats-bar {
+  display: flex;
+  gap: 48px;
+  margin-top: 46px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.stat strong {
+  display: block;
+  font-size: 30px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+/* ======================== TRUSTED & DATA ======================== */
+.trusted {
+  background: #f8fafc;
+  padding: 42px 0;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.real-data {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 68px 0;
+}
+
+/* ======================== FEATURES ======================== */
+.section {
+  padding: 88px 0;
+}
+
+.feature-card {
+  transition: transform .35s cubic-bezier(0.4,0,0.2,1), 
+              box-shadow .35s cubic-bezier(0.4,0,0.2,1);
+}
+
+.feature-card:hover {
+  transform: translateY(-9px);
+  box-shadow: 0 28px 55px -15px rgb(15 23 42 / 0.18);
+}
+
+/* ======================== METRICS (DASHBOARD) ======================== */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.metric-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  animation: metricRise 0.58s var(--ease-spring) backwards;
+}
+
+.metric-card:hover {
+  border-color: #0ea5e9;
+  transform: translateY(-4.5px) scale(1.022);
+}
+
+/* ======================== TABLES ======================== */
+.table-container { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+table { width: 100%; font-size: 14.5px; border-collapse: collapse; }
+th { background: #f8fafc; padding: 16px 22px; font-weight: 700; font-size: 11.5px; text-transform: uppercase; color: #475569; }
+td { padding: 15px 22px; border-bottom: 1px solid var(--border); }
+tr:hover { background: #f0f9ff; }
+tbody tr { animation: tableRowStagger 0.4s var(--ease-out) backwards; }
+
+/* ======================== BUTTONS & FORMS ======================== */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 23px; font-size: 14.5px; font-weight: 600; border-radius: 10px; transition: var(--transition-base); }
+
+.btn-primary { background: linear-gradient(90deg, #0ea5e9, #0284c8); color: white; box-shadow: 0 4px 14px rgb(14 165 233 / 0.35); }
+.btn-primary:hover { transform: translateY(-3px); }
+
+.btn-secondary { background: white; color: #0f172a; border: 1px solid #e2e8f0; }
+.btn-secondary:hover { transform: translateY(-2px); }
+
+.premium-input, select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14.5px;
+  transition: border-color .2s;
+}
+.premium-input:focus { border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14,165,233,0.1); }
+
+/* ======================== MODALS & TOAST ======================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,.78);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(14px);
+}
+.modal.active { display: flex; }
+.modal-content {
+  background: white;
+  max-width: 580px;
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 32px 68px -15px rgb(15 23 42 / 0.43);
+  animation: modalEnter 0.42s var(--ease-smooth);
+}
+
+#toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 99999; }
+.toast {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-shadow: 0 10px 15px -3px rgb(15 23 42 / 0.1);
+  animation: toastSlide 0.36s var(--ease-smooth);
+}
+
+/* ======================== DASHBOARD SPECIFIC ======================== */
+.nav-tab {
+  padding: 8px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  background: white;
+  transition: all 0.22s var(--ease-out);
+}
+.nav-tab.active {
+  background: #0ea5e9;
+  color: white;
+  border-color: #0ea5e9;
+}
+
+/* ======================== RESPONSIVE ======================== */
+@media (max-width: 768px) {
+  .metrics-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .nav-content, .container { padding: 0 20px; }
+}
+
+/* Final polish */
+button, .btn, .card, .metric-card {
+  will-change: transform;
+}
+
+/* Role hiding */
+body.role-tenant .admin-only,
+body.role-tenant .add-building-btn {
+  display: none !important;
+}
