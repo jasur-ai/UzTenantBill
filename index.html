@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UzTenantBill — 2026 Toshkent • Professional Tenant Utility Recovery</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* ============================================
+       ULTRA PREMIUM LANDING v45 — Perfectly Balanced
+       Clean, centered, professional SaaS look
+    ============================================ */
+
+    .nav-public {
+      background: #0f172a;
+      border-bottom: 1px solid #1e2937;
+      backdrop-filter: blur(24px);
+    }
+
+    .nav-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero {
+      background: linear-gradient(150deg, #0f172a 0%, #1e2937 100%);
+      color: #fff;
+      padding: 92px 0 76px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 4%;
+      right: -2%;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle at 44% 18%, rgba(14,165,233,0.05) 0%, transparent 78%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15,23,42,.72);
+      color: #67c0f3;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(103,192,243,.25);
+      letter-spacing: .5px;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      line-height: 1.06;
+      font-weight: 800;
+      letter-spacing: -3px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .hero p {
+      font-size: 16.5px;
+      color: #94a3b8;
+      max-width: 510px;
+      margin: 0 auto 22px;
+      line-height: 1.55;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
+    }
+
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 46px;
+      flex-wrap: wrap;
+    }
+
+    .stat strong {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      display: block;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .stat span {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* TRUSTED */
+    .trusted {
+      background: #f8fafc;
+      padding: 32px 0;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .trusted-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      color: #64748b;
+      margin-bottom: 14px;
+    }
+
+    .trusted-logos {
+      display: flex;
+      justify-content: center;
+      gap: 46px;
+      flex-wrap: wrap;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #475569;
+      opacity: 0.9;
+    }
+
+    /* WHY US */
+    .why-section {
+      background: #f8fafc;
+    }
+
+    .why-us-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+      gap: 18px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .why-card {
+      padding: 22px 20px;
+      border-radius: 14px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      transition: all .25s ease;
+    }
+
+    .why-card:hover {
+      transform: translateY(-2px);
+      border-color: #0ea5e9;
+      box-shadow: 0 10px 25px -8px rgb(15 23 42 / 0.08);
+    }
+
+    .why-card strong {
+      display: block;
+      font-size: 14.5px;
+      margin-bottom: 5px;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .why-card span {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.45;
+    }
+
+    /* CONVENIENCES */
+    .convenience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .conv-card {
+      padding: 15px 18px;
+      border-radius: 11px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      font-size: 14px;
+    }
+
+    .conv-card strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    /* FEATURES */
+    .section {
+      padding: 82px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-header h2 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -1.6px;
+      margin: 4px 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .feature-card {
+      padding: 30px 26px;
+      border-radius: 16px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      transition: all .3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px -10px rgb(15 23 42 / 0.1);
+    }
+
+    /* REAL DATA */
+    .real-data {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 68px 0;
+    }
+
+    /* HOW IT WORKS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 28px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      background: #0ea5e9;
+      color: white;
+      font-weight: 800;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14.5px;
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: #0f172a;
+      color: #fff;
+      padding: 76px 0;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    /* CENTERING */
+    .nav-content, .container, .hero-content {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="navbar nav-public">
+    <div class="nav-content">
+      <a href="index.html" class="logo">
+        <span id="logo-container"></span>
+        <span>UzTenantBill</span>
+      </a>
+      <div class="nav-links">
+        <a href="#why">Nima uchun biz?</a>
+        <a href="#features">Imkoniyatlar</a>
+        <a href="#data">2026 Ma'lumotlar</a>
+        <a href="#how">Qanday ishlaydi</a>
+      </div>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <a href="login.html" class="btn btn-secondary btn-sm">Kirish</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Bepul ro'yxatdan o'tish</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          2026 Toshkent • Real tijorat mulki
+        </div>
+        
+        <h1>Tijorat mulki kommunallarini<br>adolatli va tez undirish</h1>
+        
+        <p>
+          O'zbekiston va Markaziy Osiyo uchun maxsus yaratilgan professional platforma.<br>
+          Yagona to'liq mahalliy yechim — real 2026 ma'lumotlar, 1C integratsiyasi va oddiy ijarachilar uchun qulayliklar bilan.
+        </p>
+        
+        <div class="hero-ctas">
+          <a href="register.html" class="btn btn-primary" style="padding:16px 42px; font-size:15px;">
+            30 kun bepul sinab ko'rish
+          </a>
+          <a href="login.html" class="btn btn-secondary" style="padding:16px 36px; font-size:15px;">
+            Demo kirish
+          </a>
+        </div>
+        
+        <div class="stats-bar">
+          <div class="stat"><strong>47</strong><span>Faol bino</span></div>
+          <div class="stat"><strong>1,842</strong><span>Ijarachi</span></div>
+          <div class="stat"><strong>84.7%</strong><span>O'rtacha yig'ish</span></div>
+          <div class="stat"><strong>142.4M</strong><span>UZS / oy</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TRUSTED -->
+  <div class="trusted">
+    <div class="container">
+      <div class="trusted-label">ISHONCHLI MIJOZLAR — 2026</div>
+      <div class="trusted-logos">
+        <div>Sergeli Business Hub</div>
+        <div>Chilonzor Trade Center</div>
+        <div>Yakkasaroy Industrial Park</div>
+        <div>Toshkent City Mall</div>
+        <div>Atlas Business Center</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY US — 10 POWERFUL DIFFERENTIATORS -->
+  <div id="why" class="section why-section">
+    <div class="container">
+      <div class="section-header">
+        <div style="font-size:12.5px; font-weight:700; color:#0ea5e9; letter-spacing:1.2px;">BOSHQA PLATFORMALARDAN FARQI</div>
+        <h2>Nega aynan UzTenantBill?</h2>
+      </div>
+      
+      <div class="why-us-grid">
+        <div class="why-card"><strong>1. O'zbekiston uchun maxsus yaratilgan</strong><span>Markaziy Osiyo tijorat mulki uchun birinchi to'liq mahalliy platforma. Yardi/MRI kabi xorijiy gigantlar emas.</span></div>
+        <div class="why-card"><strong>2. Haqiqiy 2026 Toshkent ma'lumotlari</strong><span>Sergeli, Chilonzor, Yakkasaroy — real statistika va benchmarklar bilan (boshqalarda yo'q).</span></div>
+        <div class="why-card"><strong>3. To'liq 1C + CAM integratsiyasi</strong><span>O'zbekiston buxgalteriyasi uchun tayyor XML va CAM reconciliation.</span></div>
+        <div class="why-card"><strong>4. Hardware-siz RUBS</strong><span>Area, Occupancy, Power va Combined formulalar — professional hisob-kitob.</span></div>
+        <div class="why-card"><strong>5. Telegram + SMS eslatmalar</strong><span>Mahalliy odamlar uchun eng samarali eslatma kanallari.</span></div>
+        <div class="why-card"><strong>6. Mahalliy AI OCR</strong><span>O'zbek va rus tilidagi kommunal hisob-kitoblarni avtomatik o'qish — 97% aniqlik.</span></div>
+        <div class="why-card"><strong>7. Arzon va tez boshlash</strong><span>Katta korporativ narxlarsiz — kichik va o'rta biznes uchun mos.</span></div>
+        <div class="why-card"><strong>8. Oddiy tenant view</strong><span>Ijarachilar faqat o'z hisobini ko'radi — hech qanday murakkablik yo'q.</span></div>
+        <div class="why-card"><strong>9. To'liq hisobotlar</strong><span>PDF, Excel, 1C XML, CAM TXT — darhol yuklab olish.</span></div>
+        <div class="why-card"><strong>10. Ochiq va moslashuvchan</strong><span>Oddiy API va eksport — boshqa tizimlar bilan osongina ulanadi.</span></div>
+      </div>
+      <div style="max-width:1280px;margin:30px auto 0;padding:0 48px;">
+        <div style="background:white;border:1px solid #e2e8f0;padding:18px 24px;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+          <div>
+            <strong style="font-size:15px;">Amalda isbot: 30+ live functions</strong><br>
+            <span style="font-size:13.5px;color:#64748b;">Savings calculator, Yardi comparison, CAM Reconcile, Occupancy uplift, Credit score, Forecast, Telegram bulk, Churn impact — real UZS results.</span>
+          </div>
+          <a href="login.html" class="btn btn-primary" style="padding:10px 24px;font-size:13.5px;">Dashboardda sinab ko'rish →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 EXTRA CONVENIENCES FOR REGULAR PEOPLE -->
+  <div class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Hamma uchun qo'shimcha qulayliklar</h2>
+        <p style="color:#64748b; max-width:620px; margin:0 auto;">Ijarachilar, kichik mulk egalar va buxgalterlar uchun maxsus o'ylangan 10 ta jihat</p>
+      </div>
+      
+      <div class="convenience-grid">
+        <div class="conv-card"><strong>1. Shaxsiy tenant kabineti</strong> Faqat o'zingizning hisobingiz — boshqa hech narsa.</div>
+        <div class="conv-card"><strong>2. Bir tugma bilan to'lov tasdiqlash</strong> "To'landi" belgilang — avtomatik yangilanadi.</div>
+        <div class="conv-card"><strong>3. Telefon va planshetda qulay</strong> To'liq mobil mos — har yerda ishlating.</div>
+        <div class="conv-card"><strong>4. AI OCR bilan tezkor yuklash</strong> Hisob-kitob rasmini yuklang — avtomatik o'qiydi.</div>
+        <div class="conv-card"><strong>5. Real demo hisoblar</strong> Darhol kirib, haqiqiy Toshkent ma'lumotlarini sinab ko'ring.</div>
+        <div class="conv-card"><strong>6. Parolni unutdingizmi?</strong> Demo parollar darhol ko'rsatiladi.</div>
+        <div class="conv-card"><strong>7. Yuklangan hisobotlar tarixi</strong> Oldin yuklagan fayllaringiz ro'yxati.</div>
+        <div class="conv-card"><strong>8. Rolni o'zgartirib sinab ko'rish</strong> Admin sifatida tenant ko'rinishini sinab ko'ring.</div>
+        <div class="conv-card"><strong>9. Tezkor RUBS hisoblagichi</strong> Har qanday binoda bir necha soniyada hisoblang.</div>
+        <div class="conv-card"><strong>10. Kredit kartasiz boshlash</strong> 30 kun bepul — hech qanday majburiyat yo'q.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div style="font-size:12.5px; font-weight:700; color:#0ea5e9; letter-spacing:1.2px;">ASOSIY IMKONIYATLAR</div>
+        <h2>Kuchli funksiyalar. Oddiy interfeys.</h2>
+      </div>
+      
+      <div class="feature-grid">
+        <div class="card feature-card">
+          <div style="width:46px;height:46px;background:#f0f9ff;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="24" height="24" fill="#0ea5e9" viewBox="0 0 24 24"><path d="M3 3v18h18V3H3zm16 16H5V5h14v14zM7 7h2v10H7V7zm4 0h2v10h-2V7zm4 0h2v10h-2V7z"/></svg>
+          </div>
+          <h3 style="font-size:19px;margin:0 0 8px;">Advanced RUBS Engine</h3>
+          <p style="color:#64748b; font-size:14.5px;">Area, Occupancy, Power va Combined hisob-kitoblar — hardware-siz.</p>
+        </div>
+        
+        <div class="card feature-card">
+          <div style="width:46px;height:46px;background:#f0f9ff;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="24" height="24" fill="#0ea5e9" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 style="font-size:19px;margin:0 0 8px;">AI OCR + Smart Processing</h3>
+          <p style="color:#64748b; font-size:14.5px;">97% aniqlik bilan kommunal hisob-kitoblarni avtomatik o'qish.</p>
+        </div>
+        
+        <div class="card feature-card">
+          <div style="width:46px;height:46px;background:#f0f9ff;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="24" height="24" fill="#0ea5e9" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 14H8v-2h8v2zm0-4H8V8h8v4z"/></svg>
+          </div>
+          <h3 style="font-size:19px;margin:0 0 8px;">Telegram + SMS Penalties</h3>
+          <p style="color:#64748b; font-size:14.5px;">Kech to'lovchilarga avtomatik eslatma va jarima hisoblash.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL 2026 DATA -->
+  <div id="data" class="real-data">
+    <div class="container">
+      <div class="section-header">
+        <div style="font-size:12.5px; font-weight:700; color:#64748b; letter-spacing:1.2px;">2026 REAL MA'LUMOTLAR</div>
+        <h2 style="color:white; font-size:34px; margin:6px 0;">Toshkent tijorat mulki statistikasi</h2>
+      </div>
+      
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px,1fr)); gap:22px; max-width:1280px; margin:0 auto;">
+        <div class="card" style="background:#1e2937; border:none; color:#e2e8f0;">
+          <div class="card-body">
+            <div style="font-size:15px; color:#64748b;"><strong style="font-size:28px; color:#fff;">94%</strong><br>Sergeli Business Hub</div>
+            <div style="margin-top:10px; font-size:13.5px;">87 ijarachi • 24.5M UZS • 94% yig'ish</div>
+          </div>
+        </div>
+        <div class="card" style="background:#1e2937; border:none; color:#e2e8f0;">
+          <div class="card-body">
+            <div style="font-size:15px; color:#64748b;"><strong style="font-size:28px; color:#fff;">97%</strong><br>Chilonzor Trade Center</div>
+            <div style="margin-top:10px; font-size:13.5px;">132 ijarachi • 41.2M UZS • 97% yig'ish</div>
+          </div>
+        </div>
+        <div class="card" style="background:#1e2937; border:none; color:#e2e8f0;">
+          <div class="card-body">
+            <div style="font-size:15px; color:#64748b;"><strong style="font-size:28px; color:#fff;">71%</strong><br>Yakkasaroy Industrial Park</div>
+            <div style="margin-top:10px; font-size:13.5px;">54 ijarachi • 18.7M UZS • 71% yig'ish</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div id="how" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>3 qadamda boshlang</h2>
+      </div>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <strong style="font-size:17px;">Ro'yxatdan o'ting</strong><br>
+            <span style="color:#64748b; font-size:14.5px;">Admin, Accountant yoki Tenant roliga kirish</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <strong style="font-size:17px;">Binolaringizni qo'shing</strong><br>
+            <span style="color:#64748b; font-size:14.5px;">Real Toshkent ma'lumotlarini yuklang yoki qo'lda kiriting</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <strong style="font-size:17px;">RUBS &amp; undiring</strong><br>
+            <span style="color:#64748b; font-size:14.5px;">Avtomatik hisob-kitob, eslatmalar va hisobotlar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <div class="container">
+      <h2>Bugun boshlang. Darhol natija.</h2>
+      <p style="color:#64748b; margin-bottom:32px;">Kredit karta talab qilinmaydi. 30 kun bepul sinov.</p>
+      <div style="display:flex; gap:14px; justify-content:center;">
+        <a href="register.html" class="btn btn-primary" style="padding:17px 46px; font-size:15.5px;">Ro'yxatdan o'tish</a>
+        <a href="login.html" class="btn btn-secondary" style="padding:17px 40px; font-size:15.5px; border-color:#334155; color:white;">Demo bilan kirish</a>
+      </div>
+    </div>
+  </div>
+
+  <footer style="background:#0f172a; padding:28px 0; font-size:13px; color:#64748b; text-align:center; border-top:1px solid #1e2937;">
+    © 2026 UzTenantBill — Professional Tenant Utility Platform • Toshkent, O'zbekiston
+  </footer>
+
+  <!-- Robust modal container (for any future proof calls / consistency) -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">UzTenantBill <span onclick="this.closest('.modal').classList.remove('active')" style="cursor:pointer;font-size:26px;line-height:1;">×</span></div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/logo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoContainer = document.getElementById('logo-container');
+      if (logoContainer && window.UzLogo) {
+        logoContainer.innerHTML = window.UzLogo.getLogoSVG(30);
+      }
+      
+      const current = window.UzAuth && window.UzAuth.getCurrentUser ? window.UzAuth.getCurrentUser() : null;
+      if (current) {
+        const navRight = document.querySelector('.nav-content > div:last-child');
+        if (navRight) {
+          navRight.innerHTML = `
+            <span style="color:#94a3b8; font-size:13px; margin-right:12px;">Xush kelibsiz, ${current.fullName.split(' ')[0]}</span>
+            <a href="dashboard.html" class="btn btn-primary btn-sm">Dashboardga o'tish</a>
+          `;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

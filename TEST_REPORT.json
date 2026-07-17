@@ -1,0 +1,87 @@
+{
+  "version": "v75-extreme-detailed-v3",
+  "timestamp": "2026-07-17T14:19:03.599Z",
+  "summary": {
+    "pass": 82,
+    "fail": 0,
+    "skip": 0
+  },
+  "sections": {
+    "1. CORE & CRUD": {
+      "pass": 2,
+      "fail": 0,
+      "skip": 0
+    },
+    "2. RUBS ENGINE — ALL VARIANTS + EDGE": {
+      "pass": 8,
+      "fail": 0,
+      "skip": 0
+    },
+    "3. AI COPILOT — MULTIPLE INPUTS": {
+      "pass": 6,
+      "fail": 0,
+      "skip": 0
+    },
+    "4. PREDICTIVE + ANALYTICS": {
+      "pass": 4,
+      "fail": 0,
+      "skip": 0
+    },
+    "5. TENANT OPERATIONS + LIFECYCLE": {
+      "pass": 10,
+      "fail": 0,
+      "skip": 0
+    },
+    "6. UZBEKISTAN-ONLY FEATURES": {
+      "pass": 5,
+      "fail": 0,
+      "skip": 0
+    },
+    "7. COMPLEX SIMULATORS": {
+      "pass": 2,
+      "fail": 0,
+      "skip": 0
+    },
+    "8. PROOFS + REPORTS": {
+      "pass": 19,
+      "fail": 0,
+      "skip": 0
+    },
+    "9. LIVE MODE TOGGLES (3x ON/OFF)": {
+      "pass": 6,
+      "fail": 0,
+      "skip": 0
+    },
+    "10. TIMELINE + SCENARIO MATRIX": {
+      "pass": 4,
+      "fail": 0,
+      "skip": 0
+    },
+    "11. DIAGNOSTICS": {
+      "pass": 4,
+      "fail": 0,
+      "skip": 0
+    },
+    "12. UI HELPERS + STATE": {
+      "pass": 5,
+      "fail": 0,
+      "skip": 0
+    },
+    "13. STATE INTEGRITY + MUTATION CYCLES (x3)": {
+      "pass": 3,
+      "fail": 0,
+      "skip": 0
+    },
+    "14. ERROR HANDLING & EDGE CASES": {
+      "pass": 4,
+      "fail": 0,
+      "skip": 0
+    }
+  },
+  "errors": [],
+  "health": {
+    "buildings": 6,
+    "tenants": 7,
+    "callable": 69
+  }
+}
