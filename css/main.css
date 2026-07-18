@@ -1,0 +1,280 @@
+/* ===========================================
+   UzTenantBill — ULTRA ENTERPRISE v65 (2026)
+   EXTREMELY ADVANCED — World-class SaaS
+   Ultra-premium glassmorphism, advanced visualizations,
+   complex UX, predictive engines, AI-level interactions
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;family=Inter:wght@700&amp;display=swap');
+
+:root {
+  --primary: #0a0f1c;
+  --accent: #0ea5e9;
+  --accent-2: #22d3ee;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --text: #0f172a;
+  --muted: #64748b;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --radius: 18px;
+  
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-ultra: cubic-bezier(0.23, 1.0, 0.32, 1);
+}
+
+/* ======================== ULTRA BASE ======================== */
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "tnum", "ss01", "cv11";
+}
+
+/* ======================== ULTRA GLASS + PREMIUM ======================== */
+.nav-content, .container { 
+  max-width: 1460px; 
+  margin-left: auto; margin-right: auto; 
+  padding-left: 52px; padding-right: 52px; 
+}
+
+.navbar {
+  background: rgba(10,15,28,0.96);
+  backdrop-filter: blur(32px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: sticky; top: 0; z-index: 300;
+}
+
+.logo { display: flex; align-items: center; gap: 13px; text-decoration: none; font-weight: 800; font-size: 22px; color: white; letter-spacing: -0.4px; }
+.logo svg { transition: transform 0.65s var(--ease-spring); filter: drop-shadow(0 4px 8px rgba(14,165,233,0.3)); }
+.logo:hover svg { transform: scale(1.16) rotate(9deg); }
+
+.nav-links { display: flex; align-items: center; gap: 40px; }
+.nav-links a { color: #cbd5e1; font-size: 15px; font-weight: 600; transition: all 0.2s var(--ease-out); }
+.nav-links a:hover, .nav-links a.active { color: #fff; transform: translateY(-1px); }
+
+/* ======================== ULTRA BUTTONS ======================== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 13px 28px; font-size: 14.8px; font-weight: 700; border-radius: 16px;
+  border: 1px solid transparent; cursor: pointer; transition: all 0.28s var(--ease-ultra);
+  text-decoration: none; white-space: nowrap; position: relative; overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(transparent, rgba(255,255,255,0.18));
+  opacity: 0; transition: 0.22s;
+}
+.btn:hover::after { opacity: 1; }
+
+.btn-primary { 
+  background: linear-gradient(90deg, #0ea5e9, #0284c8, #0ea5e9); 
+  background-size: 200% 100%; color: white; 
+  box-shadow: 0 6px 22px rgb(14 165 233 / 0.45);
+  font-weight: 800;
+}
+.btn-primary:hover { 
+  background-position: 100% 0; 
+  transform: translateY(-4px) scale(1.015); 
+  box-shadow: 0 24px 46px -10px rgb(14 165 233 / 0.6); 
+}
+
+.btn-secondary { background: #fff; color: #0f172a; border: 1px solid #e2e8f0; }
+.btn-secondary:hover { transform: translateY(-2.5px); box-shadow: 0 8px 18px -4px rgb(15 23 42 / 0.16); }
+
+.btn-sm { padding: 9px 19px; font-size: 13.2px; border-radius: 13px; }
+.btn-outline { background: transparent; border: 1.5px solid #cbd5e1; color: #334155; }
+.btn-outline:hover { background: #f8fafc; border-color: #64748b; }
+
+.btn-success { background: linear-gradient(#10b981, #059669); color: white; }
+.btn-danger { background: linear-gradient(#ef4444, #b91c1c); color: white; }
+
+/* ======================== ULTRA CARDS ======================== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 22px -4px rgb(15 23 42 / 0.07), 0 6px 9px -4px rgb(15 23 42 / 0.06);
+  transition: transform 0.42s var(--ease-ultra), box-shadow 0.4s var(--ease-spring), border-color 0.25s;
+  position: relative; overflow: hidden;
+}
+.card:hover { 
+  transform: translateY(-11px); 
+  box-shadow: 0 44px 80px -16px rgb(15 23 42 / 0.22); 
+  border-color: #bae6fd; 
+}
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(14,165,233,0.15), transparent);
+  opacity: 0.6;
+}
+
+/* ======================== ULTRA HERO ======================== */
+.hero {
+  background: linear-gradient(150deg, #0a0f1c 0%, #1e2937 100%);
+  color: white; padding: 108px 0 88px; position: relative; overflow: hidden;
+}
+.hero::after { 
+  content: ''; position: absolute; top: -5%; right: -6%; 
+  width: 520px; height: 520px; 
+  background: radial-gradient(circle at 48% 22%, rgba(14,165,233,0.06) 0%, transparent 80%); 
+  pointer-events: none; 
+}
+
+.hero-content { max-width: 820px; margin: 0 auto; padding: 0 24px; text-align: center; }
+.hero h1 { font-size: 52px; line-height: 1.02; font-weight: 900; letter-spacing: -3.6px; margin-bottom: 14px; }
+.hero p { font-size: 17px; color: #94a3b8; max-width: 570px; margin: 0 auto 28px; line-height: 1.6; }
+
+/* ======================== ULTRA METRICS & STATS ======================== */
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 22px; margin-bottom: 34px; }
+.metric-card {
+  background: white; border: 1px solid var(--border); border-radius: 20px;
+  padding: 26px 28px; transition: all 0.38s var(--ease-ultra);
+  position: relative;
+}
+.metric-card:hover { transform: translateY(-4px); border-color: #0ea5e9; }
+.metric-value { font-size: 31px; font-weight: 900; line-height: 1; }
+
+.stats-bar { display: flex; justify-content: center; gap: 74px; flex-wrap: wrap; }
+.stat strong { font-size: 38px; font-weight: 900; color: #fff; line-height: 1; display: block; margin-bottom: 3px; }
+.stat span { font-size: 13.8px; color: #64748b; font-weight: 600; }
+
+/* ======================== ULTRA TABLES ======================== */
+.table-container { 
+  border: 1px solid var(--border); border-radius: 16px; 
+  overflow: hidden; background: white; box-shadow: 0 6px 16px rgb(15 23 42 / 0.04);
+}
+table { width: 100%; font-size: 14.8px; border-collapse: collapse; }
+th { 
+  background: #f8fafc; padding: 18px 26px; font-weight: 800; font-size: 11.5px; 
+  text-transform: uppercase; color: #475569; letter-spacing: 0.7px; cursor: pointer;
+}
+th:hover { background: #f1f5f9; }
+td { padding: 17px 26px; border-bottom: 1px solid #f1f5f9; }
+tr:hover { background: #f8fafc; }
+
+/* ======================== ULTRA MODALS + TOAST ======================== */
+.modal {
+  position: fixed; inset: 0; background: rgba(10,15,28,.88); display: none;
+  align-items: center; justify-content: center; z-index: 400; backdrop-filter: blur(22px);
+}
+.modal.active { display: flex; }
+
+.modal-content {
+  background: white; max-width: 760px; width: 96%; border-radius: 22px;
+  box-shadow: 0 50px 110px -18px rgb(15 23 42 / 0.6); overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+.modal-header { 
+  padding: 20px 26px; font-weight: 800; border-bottom: 1px solid #f1f5f9; 
+  display: flex; justify-content: space-between; align-items: center; font-size: 17px; 
+}
+.modal-body { padding: 26px 28px; max-height: 78vh; overflow-y: auto; }
+
+#toast-container { position: fixed; bottom: 32px; right: 32px; z-index: 999999; display: flex; flex-direction: column; gap: 9px; }
+.toast {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 21px;
+  box-shadow: 0 20px 36px -8px rgb(15 23 42 / 0.15);
+  animation: toastUltra 0.42s var(--ease-ultra);
+  font-size: 14.2px; display: flex; align-items: center; gap: 11px;
+  border-left: 5px solid #10b981;
+}
+
+/* ======================== ADVANCED VISUALS ======================== */
+.nav-tabs { display: flex; gap: 6px; margin-bottom: 26px; border-bottom: 1px solid #e2e8f0; }
+.nav-tab { 
+  padding: 12px 24px; font-size: 14.8px; font-weight: 700; color: #64748b; cursor: pointer; 
+  border-bottom: 4px solid transparent; transition: all 0.26s var(--ease-ultra);
+}
+.nav-tab.active { color: #0f172a; border-bottom-color: #0ea5e9; font-weight: 800; }
+
+.proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 11px; }
+.proof-btn { font-size: 13px; padding: 10px 12px; text-align: left; border-radius: 13px; }
+
+.chart-container { 
+  background: #f8fafc; border-radius: 18px; padding: 22px; margin: 16px 0; 
+  border: 1px solid var(--border); position: relative;
+}
+
+/* ======================== ULTRA FORMS & CONTROLS ======================== */
+.advanced-input, input, select, textarea {
+  width: 100%; padding: 14px 17px; border: 1.5px solid #cbd5e1; border-radius: 14px;
+  font-size: 15.2px; outline: none; transition: all .2s var(--ease-ultra); background: white;
+}
+.advanced-input:focus, input:focus, select:focus { 
+  border-color: #0ea5e9; box-shadow: 0 0 0 5px rgba(14,165,233,0.13); 
+  transform: translateY(-1px);
+}
+
+.range-slider { width: 100%; accent-color: #0ea5e9; height: 7px; }
+
+.progress-bar { height: 8px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin: 9px 0; }
+.progress-bar > div { height: 100%; background: linear-gradient(90deg, #0ea5e9, #10b981, #22d3ee); transition: width .7s var(--ease-ultra); }
+
+/* ======================== ULTRA HEATMAP + VISUALS ======================== */
+.heatmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(88px, 1fr)); gap: 9px; }
+.heatmap-cell { 
+  height: 80px; border-radius: 12px; display: flex; align-items: center; justify-content: center; 
+  font-size: 12.2px; font-weight: 700; color: white; flex-direction: column; 
+  transition: transform .2s var(--ease-ultra), box-shadow .2s; cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+.heatmap-cell:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 12px 20px rgba(0,0,0,0.2); }
+
+/* ======================== ULTRA ROLE + ANIM ======================== */
+body.role-tenant .admin-only { display: none !important; }
+.limited-view { opacity: 0.94; filter: saturate(0.9); }
+
+@keyframes metricRiseUltra { from { opacity: 0; transform: translateY(42px) scale(0.78); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes tableStagger { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes toastUltra { from { opacity: 0; transform: translateX(110px) scale(0.75); } to { opacity: 1; transform: translateX(0) scale(1); } }
+@keyframes modalUltra { from { opacity:0; transform: scale(0.85) translateY(36px); } to { opacity:1; transform: scale(1) translateY(0); } }
+
+.metric-card { animation: metricRiseUltra 0.7s var(--ease-spring) backwards; }
+tbody tr { animation: tableStagger 0.45s var(--ease-out) backwards; }
+.modal-content { animation: modalUltra 0.36s var(--ease-ultra) backwards; }
+
+/* ======================== ULTRA SPECIAL ======================== */
+.status-badge { padding: 4px 13px; border-radius: 999px; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; }
+.status-paid { background: #d1fae5; color: #065f46; }
+.status-partial { background: #fef3c7; color: #92400e; }
+.status-late { background: #fee2e2; color: #991b1b; }
+
+.uz-flag { 
+  display: inline-block; width: 18px; height: 12px; 
+  background: linear-gradient(#1eb53a 33%, #fff 33%, #fff 66%, #c8102e 66%); 
+  border: 1px solid #333; vertical-align: middle; margin-right: 6px; border-radius: 2px; 
+}
+
+/* Live indicators */
+.live-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 6px; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* Advanced simulator */
+.simulator { background: #f8fafc; padding: 24px; border-radius: 18px; border: 1px solid #e2e8f0; }
+.sim-controls { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+
+/* Ultra responsive */
+@media (max-width: 1000px) {
+  .nav-links { display: none; }
+  .nav-content, .container { padding: 0 22px; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .hero h1 { font-size: 43px; }
+  .proof-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Extra premium polish */
+.card-header { padding: 18px 26px; font-weight: 800; border-bottom: 1px solid #f1f5f9; font-size: 15.5px; }
+h1, h2, h3 { letter-spacing: -0.7px; }
+
+/* Glassmorphism accent */
+.glass { background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); }

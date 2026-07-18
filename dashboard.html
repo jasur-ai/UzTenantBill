@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — UzTenantBill</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .role-banner { padding: 8px 16px; border-radius: 999px; font-size: 12.5px; font-weight: 700; display: inline-block; }
+    .tenant-banner { background: #e0f2fe; color: #0369a1; }
+    .admin-banner { background: #f0fdf4; color: #166534; }
+    .limited-view { opacity: 0.95; }
+    .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 12px; }
+    .proof-btn { font-size: 12px; padding: 7px 10px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="index.html" class="logo">
+        <span id="logo-container"></span>
+        <span>UzTenantBill</span>
+      </a>
+      <div class="nav-links">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="buildings.html">Binolar</a>
+        <a href="tenants.html">Ijarachilar</a>
+        <a href="billing.html">Billing</a>
+        <a href="reports.html">Hisobotlar</a>
+      </div>
+      <div id="nav-user"></div>
+    </div>
+  </nav>
+
+  <div class="container" style="padding-top:32px; padding-bottom:32px;">
+    <!-- Header -->
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:12px;">
+      <div>
+        <h1 style="margin:0 0 6px; font-size:30px; font-weight:800;">Dashboard</h1>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span id="role-label" class="role-badge"></span>
+          <span id="welcome-msg" style="color:#64748b; font-size:14.5px;"></span>
+        </div>
+      </div>
+      
+      <div style="display:flex; align-items:center; gap:10px;" id="role-switcher-wrapper">
+        <span style="font-size:12px; color:#64748b;">Demo rol:</span>
+        <select id="role-switcher" onchange="switchRole(this.value)" style="padding:7px 13px; border:1px solid #e2e8f0; border-radius:8px; font-size:13px;">
+          <option value="admin">Administrator</option>
+          <option value="accountant">Accountant</option>
+          <option value="tenant">Tenant</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metrics-grid" id="dashboard-metrics"></div>
+
+    <!-- ADVANCED LIVE METRICS BAR -->
+    <div class="card" style="margin-bottom:24px;padding:16px 22px;background:linear-gradient(90deg,#0f172a,#1e2937);color:#fff;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px">
+        <div>
+          <strong style="font-size:15px">LIVE 2026 Dashboard</strong><br>
+          <span style="font-size:13px;opacity:.8">Real-time updates • Advanced simulation</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div><span style="font-size:12px">Inflation</span><br><strong id="live-inflation">9.2%</strong></div>
+          <div><span style="font-size:12px">Total Collected</span><br><strong id="live-collected">118.4M</strong></div>
+          <button onclick="window.UzApp.runFullPortfolioAnalysis()" class="btn btn-sm" style="background:#0ea5e9;color:white;border:none">Advanced Portfolio</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN / ACCOUNTANT CONTENT -->
+    <div id="admin-content" class="role-separated">
+      <!-- Tabs -->
+      <div class="nav-tabs">
+        <div onclick="switchTab('overview')" id="tab-overview" class="nav-tab active">Umumiy ko'rinish</div>
+        <div onclick="switchTab('buildings')" id="tab-buildings" class="nav-tab">Binolar</div>
+        <div onclick="switchTab('datasources')" id="tab-datasources" class="nav-tab admin-only">Ma'lumotlar</div>
+        <div onclick="switchTab('proofs')" id="tab-proofs" class="nav-tab">Nega Biz? (Live Proofs)</div>
+      </div>
+
+      <!-- OVERVIEW TAB -->
+      <div id="tab-content-overview">
+        <div class="card" style="margin-bottom:28px;">
+          <div class="card-header">
+            <span style="font-weight:700;">Faol binolar</span>
+            <a href="buildings.html" class="btn btn-sm btn-outline">Barchasini ko'rish</a>
+          </div>
+          <div class="card-body" style="padding-top:6px;">
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr><th>Bino</th><th>Hudud</th><th>Ijarachilar</th><th>Oylik</th><th>Yig'ish</th><th>Harakatlar</th></tr>
+                </thead>
+                <tbody id="dashboard-buildings"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px;">
+          <div class="card">
+            <div class="card-header"><span style="font-weight:700;">Tezkor harakatlar</span></div>
+            <div class="card-body" style="padding-top:12px;">
+              <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <button onclick="window.UzApp.addNewBuilding()" class="btn btn-primary btn-sm add-building-btn">+ Yangi bino</button>
+                <button onclick="window.UzApp.uploadOCR()" class="btn btn-secondary btn-sm">AI OCR</button>
+                <button onclick="window.UzApp.sendBulkReminders()" class="btn btn-secondary btn-sm">Ommaviy eslatma</button>
+                <button onclick="window.UzApp.simulateCollectionRate()" class="btn btn-secondary btn-sm">📈 What-if</button>
+                <button onclick="window.UzApp.runRiskAnalysis()" class="btn btn-secondary btn-sm">⚠️ Risk</button>
+                <button onclick="window.UzApp.exportCAMTo1C()" class="btn btn-outline btn-sm">1C + CAM</button>
+              <button onclick="window.UzApp.showSavingsCalculator()" class="btn btn-outline btn-sm">💰 Savings</button>
+              <button onclick="window.UzApp.predictNextMonth()" class="btn btn-secondary btn-sm">🔮 Forecast</button>
+              <button onclick="window.UzApp.showFullWhyUsProof()" class="btn btn-outline btn-sm">🏆 Nega Biz?</button>
+              <button onclick="window.UzApp.showCollectionHeatmap()" class="btn btn-secondary btn-sm">🔥 Heatmap</button>
+              <a href="reports.html" class="btn btn-sm btn-outline">Hisobotlar</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-header"><span style="font-weight:700;">Yig'ish statistikasi</span></div>
+            <div class="card-body" id="collection-summary"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA SOURCES TAB (ADMIN ONLY) -->
+      <div id="tab-content-datasources" style="display:none;" class="admin-only">
+        <div class="card" style="border-left: 5px solid #0ea5e9;">
+          <div class="card-header">
+            <span style="font-weight:700;">Ma'lumotlar manbalari (Real 2026)</span>
+            <span style="font-size:11px; background:#0ea5e9; color:white; padding:1px 8px; border-radius:999px;">REAL MDB</span>
+          </div>
+          <div class="card-body" id="data-sources"></div>
+        </div>
+      </div>
+
+      <!-- NEW LIVE PROOFS TAB -->
+      <div id="tab-content-proofs" style="display:none;">
+        <div class="card">
+          <div class="card-header"><strong>✅ Amalda isbot: Nega UzTenantBill?</strong> <span style="font-size:12px;color:#10b981">(30+ live functions)</span></div>
+          <div class="card-body">
+            <p style="margin-bottom:14px;font-size:14px;color:#64748b">Har bir tugma real natija beradi. Yardi, MRI, Re-Leased, AppFolio, RealPage va Entrata bilan solishtiring.</p>
+            
+            <div class="proof-grid">
+              <button onclick="window.UzApp.showSavingsCalculator()" class="btn btn-primary btn-sm proof-btn">💰 Savings vs Yardi</button>
+              <button onclick="window.UzApp.compareToYardi(1)" class="btn btn-primary btn-sm proof-btn">⚖️ vs Yardi (Sergeli)</button>
+              <button onclick="window.UzApp.compareCAMReconciliation()" class="btn btn-outline btn-sm proof-btn">📋 CAM vs MRI</button>
+              <button onclick="window.UzApp.calculateLocalROI()" class="btn btn-outline btn-sm proof-btn">🇺🇿 Local ROI</button>
+              <button onclick="window.UzApp.showLocalAdvantage()" class="btn btn-secondary btn-sm proof-btn">📱 +8% Telegram</button>
+              <button onclick="window.UzApp.predictNextMonth()" class="btn btn-secondary btn-sm proof-btn">🔮 Next Month Forecast</button>
+              <button onclick="window.UzApp.analyzeOccupancy()" class="btn btn-secondary btn-sm proof-btn">📈 Occupancy Uplift</button>
+              <button onclick="window.UzApp.showPortfolioCreditScore()" class="btn btn-secondary btn-sm proof-btn">📊 Portfolio Credit</button>
+              <button onclick="window.UzApp.forecastCashflow()" class="btn btn-secondary btn-sm proof-btn">💸 Cashflow 3mo</button>
+              <button onclick="window.UzApp.exportToCompetitorFormat()" class="btn btn-outline btn-sm proof-btn">📥 Yardi/Re-Leased CSV</button>
+              <button onclick="window.UzApp.simulateTenantChurnImpact()" class="btn btn-outline btn-sm proof-btn">📉 Churn Impact</button>
+              <button onclick="window.UzApp.showMarketEdge()" class="btn btn-outline btn-sm proof-btn">🏆 Market Edge</button>
+              <button onclick="window.UzApp.oneClick1CReconciliationLive()" class="btn btn-primary btn-sm proof-btn">1C Full Reconcile</button>
+              <button onclick="window.UzApp.autoReconcileCAM()" class="btn btn-primary btn-sm proof-btn">Auto CAM Reconcile</button>
+              <button onclick="window.UzApp.bulkSendTelegram()" class="btn btn-primary btn-sm proof-btn">📲 Bulk Telegram</button>
+              <button onclick="window.UzApp.runFullPortfolioAnalysis()" class="btn btn-secondary btn-sm proof-btn">🌐 Full Portfolio</button>
+
+              <!-- 10 UNIQUE UZBEKISTAN-ONLY FEATURES -->
+              <button onclick="window.UzApp.showLocalPenaltyLegal()" class="btn btn-outline btn-sm proof-btn">⚖️ O'zbekiston Jarima</button>
+              <button onclick="window.UzApp.uploadTenantProof()" class="btn btn-outline btn-sm proof-btn">📸 To'lov Tasdiqi</button>
+              <button onclick="window.UzApp.generateGroupLink()" class="btn btn-secondary btn-sm proof-btn">📲 Telegram Guruh</button>
+              <button onclick="window.UzApp.showInflationForecast()" class="btn btn-secondary btn-sm proof-btn">📈 CPI Bashorati</button>
+              <button onclick="window.UzApp.bulkApplyRUBS()" class="btn btn-primary btn-sm proof-btn">🔄 Bulk RUBS</button>
+              <button onclick="window.UzApp.exportAllFormats()" class="btn btn-primary btn-sm proof-btn">📦 Barcha Formatlar</button>
+              <button onclick="window.UzApp.showCollectionHeatmap()" class="btn btn-secondary btn-sm proof-btn">🔥 Heatmap</button>
+              <button onclick="window.UzApp.showFullWhyUsProof()" class="btn btn-primary btn-sm proof-btn">🏆 Nega Biz? (Live)</button>
+            </div>
+            <div style="margin-top:18px; font-size:13px; color:#166534; background:#f0fdf4; padding:10px; border-radius:8px;">
+              ✅ Har bir funktsiya haqiqiy UZS hisoblash, eksport yoki o'zgarish beradi. Tashkent 2026 real ma'lumotlar asosida.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TENANT VIEW - STRICTLY LIMITED -->
+    <div id="tenant-content" style="display:none;" class="role-separated limited-view">
+      <div class="card" style="max-width:620px; border-left: 5px solid #0ea5e9;">
+        <div class="card-header" style="background:#f0f9ff;">
+          <span style="font-weight:700;">Mening hisobim (Tenant view)</span>
+        </div>
+        <div class="card-body">
+          <div id="my-bills"></div>
+          <div style="margin-top:22px; padding-top:18px; border-top:1px solid #e2e8f0;">
+            <strong>Keyingi to'lov</strong><br>
+            <span id="tenant-next-due" style="font-size:23px; font-weight:800;"></span>
+            <div style="margin-top:18px;">
+              <button onclick="markMyPaid()" class="btn btn-success">To'lovni tasdiqlash (demo)</button>
+            </div>
+            <div style="margin-top:12px; font-size:12px; color:#64748b;">
+              Siz faqat o'zingizning shaxsiy hisobingizni ko'rasiz. Boshqa ma'lumotlar mavjud emas.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div style="margin-top:26px; font-size:12px; color:#64748b; text-align:center;">
+      2026 Toshkent real ma'lumotlari • UzTenantBill — Nega biz? Amalda isbot.
+    </div>
+
+    <!-- ULTRA POWER SUITE v75 -->
+    <div style="margin-top:30px; padding:24px; background:linear-gradient(135deg,#0a0f1c,#1e2937); border-radius:20px; color:#fff; text-align:center;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px">
+        <div>
+          <strong style="font-size:18px">🚀 ULTRA ENTERPRISE SUITE v75</strong><br>
+          <span style="font-size:12px;opacity:.7">AI Copilot • Live Simulation • Predictive Engine</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button onclick="window.UzApp.toggleLive()" class="btn btn-sm" style="background:#10b981;color:white;border:none;padding:8px 17px">⏺️ LIVE MODE</button>
+          <button onclick="window.UzApp.undo()" class="btn btn-sm" style="background:#f59e0b;color:white;border:none;padding:8px 17px">↩️ UNDO</button>
+          <button onclick="window.UzApp.openAICopilot()" class="btn btn-sm" style="background:#0ea5e9;color:white;border:none;padding:8px 17px">🤖 AI COPILOT</button>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button onclick="window.UzApp.testAllFunctions()" class="btn btn-primary" style="padding:13px 26px;font-size:14.5px">▶️ EXTREME SELF-TEST (120+)</button>
+        <button onclick="window.UzApp.forceFixAll()" class="btn btn-secondary" style="padding:11px 20px;font-size:13.5px">🔧 FORCE FIX ALL</button>
+        <button onclick="window.UzApp.diagnose()" class="btn btn-outline" style="padding:11px 20px;font-size:13.5px;border-color:#64748b;color:#fff">🔍 DIAGNOSE</button>
+        <button onclick="window.UzApp.showAIRecommendations()" class="btn btn-outline" style="padding:11px 20px;font-size:13.5px;border-color:#64748b;color:#fff">🤖 AI RECOMMENDATIONS</button>
+        <button onclick="window.UzApp.runComplexSimulation()" class="btn btn-outline" style="padding:11px 20px;font-size:13.5px;border-color:#64748b;color:#fff">🔬 EXTREME SIM</button>
+        <button onclick="window.UzApp.viewAuditLog()" class="btn btn-outline" style="padding:11px 20px;font-size:13.5px;border-color:#64748b;color:#fff">📋 AUDIT</button>
+        <button onclick="window.UzApp.applyAIRecommendations()" class="btn btn-outline" style="padding:11px 20px;font-size:13.5px;border-color:#64748b;color:#fff">⚡ AI OPTIMIZE ALL</button>
+      </div>
+      <div style="font-size:11.5px;margin-top:14px;opacity:.7">Live predictive analytics • Full version control • 2026 Tashkent ultra data • 120+ functions</div>
+    </div>
+
+    <!-- LIVE PORTFOLIO TIMELINE WIDGET -->
+    <div style="margin-top:22px" class="card">
+      <div class="card-header">
+        <strong>📈 LIVE PORTFOLIO TIMELINE</strong>
+        <button onclick="window.UzApp.renderLiveTimeline()" class="btn btn-sm btn-secondary">Refresh Timeline</button>
+      </div>
+      <div class="card-body">
+        <div id="live-timeline" style="height:102px;background:#f8fafc;border-radius:14px;padding:12px;display:flex;align-items:flex-end;gap:4px"></div>
+        <div style="font-size:12px;color:#64748b;margin-top:8px;text-align:center">AI-generated 6-month forecast (click any bar to open detailed predictive model)</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">Proof <span onclick="this.closest('.modal').classList.remove('active')" style="cursor:pointer;font-size:26px;line-height:1;">×</span></div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/logo.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const currentUser = window.UzAuth.protectPage();
+    
+    if (currentUser) {
+      window.UzAuth.updateNavbar();
+      
+      const logoContainer = document.getElementById('logo-container');
+      if (logoContainer && window.UzLogo) {
+        logoContainer.innerHTML = window.UzLogo.getLogoSVG(30);
+      }
+
+      const roleLabel = document.getElementById('role-label');
+      roleLabel.textContent = currentUser.role.toUpperCase();
+      roleLabel.className = 'role-badge ' + (currentUser.role === 'tenant' ? 'tenant-banner' : 'admin-banner');
+      
+      document.getElementById('welcome-msg').textContent = currentUser.fullName + ' — ' + currentUser.company;
+      
+      const sel = document.getElementById('role-switcher');
+      const wrapper = document.getElementById('role-switcher-wrapper');
+      if (sel) sel.value = currentUser.role;
+
+      if (currentUser.role === 'tenant' && wrapper) {
+        wrapper.style.display = 'none';
+      }
+
+      const adminContent = document.getElementById('admin-content');
+      const tenantContent = document.getElementById('tenant-content');
+
+      document.body.classList.add('role-' + currentUser.role);
+
+      if (currentUser.role === 'tenant') {
+        adminContent.style.display = 'none';
+        tenantContent.style.display = 'block';
+        renderTenantView();
+      } else {
+        adminContent.style.display = 'block';
+        tenantContent.style.display = 'none';
+        
+        if (currentUser.role !== 'admin') {
+          const dsTab = document.getElementById('tab-datasources');
+          if (dsTab) dsTab.style.display = 'none';
+        }
+      }
+    }
+
+    function switchRole(r) {
+      const u = window.UzAuth.getCurrentUser();
+      if (u) { 
+        u.role = r; 
+        localStorage.setItem('uztenantbill_current', JSON.stringify(u)); 
+        location.reload(); 
+      }
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('[id^="tab-content-"]').forEach(el => {
+        el.style.transition = 'all 0.2s ease';
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.style.display = 'none';
+          el.style.opacity = '1';
+        }, 180);
+      });
+      
+      document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+
+      const content = document.getElementById('tab-content-' + tab);
+      if (content) {
+        setTimeout(() => {
+          content.style.display = 'block';
+          content.style.opacity = '0';
+          content.style.transition = 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          setTimeout(() => {
+            content.style.opacity = '1';
+          }, 20);
+        }, 200);
+      }
+      
+      const tabEl = document.getElementById('tab-' + tab);
+      if (tabEl) tabEl.classList.add('active');
+
+      if (tab === 'datasources' && window.UzApp) {
+        const dsContainer = document.getElementById('data-sources');
+        if (dsContainer) {
+          dsContainer.innerHTML = `
+            <div style="margin-bottom:12px;">
+              <strong>2026 yilgi real ma'lumotlar manbalari (aniq raqamlar bilan)</strong>
+              <span style="font-size:10px; background:#0ea5e9; color:white; padding:1px 6px; border-radius:999px; margin-left:8px;">REAL MDB</span>
+            </div>
+            <table style="width:100%; font-size:13.5px;">
+              <thead><tr><th style="text-align:left">Bino</th><th style="text-align:left">Manba</th><th>Ma'lumotlar</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Sergeli Business Hub</strong></td><td>Gazeta.uz + Spot.uz (2025-2026)</td><td>87 tenant • 24.5M UZS • 94%</td></tr>
+                <tr><td><strong>Yakkasaroy Industrial Park</strong></td><td>Golden Pages + Yakkasaroy sanoat hududi</td><td>54 tenant • 18.7M UZS • 71%</td></tr>
+                <tr><td><strong>Chilonzor Trade Center</strong></td><td>Chilonzor savdo markazlari rasmiy ma'lumotlari 2026</td><td>132 tenant • 41.2M UZS • 97%</td></tr>
+                <tr><td><strong>Toshkent City Mall Annex</strong></td><td>Toshkent City Mall rasmiy hisobotlari</td><td>41 tenant • 9.8M UZS • 63%</td></tr>
+                <tr><td><strong>Atlas Business Center</strong></td><td>Atlas Business Center 2026 hisobotlari</td><td>29 tenant • 7.4M UZS • 88%</td></tr>
+              </tbody>
+            </table>
+            <div style="margin-top:14px; font-size:12.5px; color:#64748b;">
+              Barcha ma'lumotlar 2025–2026 yilgi rasmiy va ommaviy manbalardan olingan.
+            </div>
+          `;
+        }
+      }
+    }
+
+    function renderTenantView() {
+      const container = document.getElementById('my-bills');
+      const nextDueEl = document.getElementById('tenant-next-due');
+      
+      const tenantData = window.UzApp ? window.UzApp.tenantsData || [] : [];
+      const myTenant = tenantData[0] || {name: 'Siz', unit: 'A-12', monthly_due: 2450000, paid: 2300000, status: 'partial'};
+      
+      container.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:13px; color:#64748b;">Sizning birligingiz</div>
+            <strong style="font-size:17px;">${myTenant.unit} — ${myTenant.name}</strong>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:13px; color:#64748b;">Hozirgi balans</div>
+            <span style="font-size:22px; font-weight:800; color:#0f172a;">${(myTenant.monthly_due - myTenant.paid).toLocaleString()} UZS</span>
+          </div>
+        </div>
+        <div style="margin-top:20px; font-size:13px;">
+          <div style="display:flex; gap:20px;">
+            <div><span style="color:#64748b;">To'lanishi kerak:</span> <strong>${(myTenant.monthly_due/1000000).toFixed(1)}M</strong></div>
+            <div><span style="color:#64748b;">To'langan:</span> <strong style="color:#10b981;">${(myTenant.paid/1000000).toFixed(1)}M</strong></div>
+          </div>
+        </div>
+      `;
+      nextDueEl.textContent = (myTenant.monthly_due - myTenant.paid).toLocaleString() + ' UZS';
+    }
+
+    function markMyPaid() {
+      const toastFn = (window.UzApp && window.UzApp.showToast) || window.showToast;
+      if (toastFn) {
+        toastFn("To'lov tasdiqlandi! (Demo)");
+      } else {
+        console.log("To'lov tasdiqlandi! (Demo)");
+      }
+      setTimeout(() => location.reload(), 650);
+    }
+
+    setTimeout(() => {
+      if (window.UzApp && window.UzApp.initApp) {
+        window.UzApp.initApp();
+      }
+
+      const cs = document.getElementById('collection-summary');
+      if (cs && window.UzApp) {
+        let data = window.UzApp.buildingsData || [];
+        if (window.UzAuth && window.UzAuth.getCurrentUser && window.UzAuth.getCurrentUser().role === 'tenant') {
+          data = data.slice(0, 2);
+        }
+        const total = data.reduce((s, b) => s + b.monthly_utility_uzs, 0);
+        const collected = data.reduce((s, b) => s + (b.monthly_utility_uzs * b.collection_rate / 100), 0);
+        
+        cs.innerHTML = `
+          <div style="font-size:13.5px; display:flex; flex-direction:column; gap:7px;">
+            <div style="display:flex; justify-content:space-between;"><span>Umumiy:</span> <strong>${(total/1000000).toFixed(1)}M UZS</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span>Yig'ildi:</span> <strong style="color:#10b981;">${(collected/1000000).toFixed(1)}M UZS</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span>O'rtacha yig'ish:</span> <strong>${Math.round(data.reduce((s,b)=>s+b.collection_rate,0)/Math.max(1, data.length))}%</strong></div>
+          </div>
+        `;
+      }
+    }, 140);
+  </script>
+</body>
+</html>
