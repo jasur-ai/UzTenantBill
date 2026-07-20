@@ -41,7 +41,7 @@ function DashboardContent() {
         cs.innerHTML = `
           <div style="font-size:13.5px; display:flex; flex-direction:column; gap:7px;">
             <div style="display:flex; justify-content:space-between;"><span>Umumiy:</span> <strong>${(total / 1000000).toFixed(1)}M UZS</strong></div>
-            <div style="display:flex; justify-content:space-between;"><span>Yig'ildi:</span> <strong style="color:#10b981;">${(collected / 1000000).toFixed(1)}M UZS</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span>Yig'ildi:</span> <strong style="color:var(--success);">${(collected / 1000000).toFixed(1)}M UZS</strong></div>
             <div style="display:flex; justify-content:space-between;"><span>O'rtacha yig'ish:</span> <strong>${Math.round(data.reduce((s: number, b: any) => s + b.collection_rate, 0) / Math.max(1, data.length))}%</strong></div>
           </div>`;
       }
@@ -59,18 +59,18 @@ function DashboardContent() {
     container.innerHTML = `
       <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
         <div style="min-width:0; flex:1 1 140px; overflow:hidden;">
-          <div style="font-size:13px; color:#64748b; white-space:nowrap;">Sizning birligingiz</div>
+          <div style="font-size:13px; color:var(--text-secondary); white-space:nowrap;">Sizning birligingiz</div>
           <strong style="font-size:16px; word-break:break-word; overflow-wrap:break-word;">${myTenant.unit} — ${shortName}</strong>
         </div>
         <div style="text-align:right; flex-shrink:0;">
-          <div style="font-size:13px; color:#64748b; white-space:nowrap;">Hozirgi balans</div>
-          <span style="font-size:22px; font-weight:800; color:#0f172a; white-space:nowrap;">${(myTenant.monthly_due - myTenant.paid).toLocaleString()} UZS</span>
+          <div style="font-size:13px; color:var(--text-secondary); white-space:nowrap;">Hozirgi balans</div>
+          <span style="font-size:22px; font-weight:800; white-space:nowrap;">${(myTenant.monthly_due - myTenant.paid).toLocaleString()} UZS</span>
         </div>
       </div>
       <div style="margin-top:20px; font-size:13px;">
         <div style="display:flex; gap:20px; flex-wrap:wrap;">
-          <div style="white-space:nowrap;"><span style="color:#64748b;">To'lanishi kerak:</span> <strong>${(myTenant.monthly_due / 1000000).toFixed(1)}M</strong></div>
-          <div style="white-space:nowrap;"><span style="color:#64748b;">To'langan:</span> <strong style="color:#10b981;">${(myTenant.paid / 1000000).toFixed(1)}M</strong></div>
+          <div style="white-space:nowrap;"><span style="color:var(--text-secondary);">To'lanishi kerak:</span> <strong>${(myTenant.monthly_due / 1000000).toFixed(1)}M</strong></div>
+          <div style="white-space:nowrap;"><span style="color:var(--text-secondary);">To'langan:</span> <strong style="color:var(--success);">${(myTenant.paid / 1000000).toFixed(1)}M</strong></div>
         </div>
       </div>`;
     if (nextDueEl) nextDueEl.textContent = (myTenant.monthly_due - myTenant.paid).toLocaleString() + ' UZS';
@@ -103,7 +103,7 @@ function DashboardContent() {
       if (dsContainer && app.buildingsData) {
         dsContainer.innerHTML = `
           <div style="margin-bottom:12px;"><strong>2026 yilgi real ma'lumotlar manbalari (aniq raqamlar bilan)</strong>
-          <span style="font-size:10px; background:#0ea5e9; color:white; padding:1px 6px; border-radius:999px; margin-left:8px;">REAL MDB</span></div>
+          <span style="font-size:10px; background:var(--accent); color:white; padding:1px 6px; border-radius:999px; margin-left:8px;">REAL MDB</span></div>
           <table style="width:100%; font-size:13.5px;">
             <thead><tr><th style="text-align:left">Bino</th><th style="text-align:left">Manba</th><th>Ma'lumotlar</th></tr></thead>
             <tbody>
@@ -114,7 +114,7 @@ function DashboardContent() {
               <tr><td><strong>Atlas Business Center</strong></td><td>Atlas Business Center 2026 hisobotlari</td><td>29 tenant • 7.4M UZS • 88%</td></tr>
             </tbody>
           </table>
-          <div style="margin-top:14px; font-size:12.5px; color:#64748b;">Barcha ma'lumotlar 2025–2026 yilgi rasmiy va ommaviy manbalardan olingan.</div>`;
+          <div style="margin-top:14px; font-size:12.5px; color:var(--text-secondary);">Barcha ma'lumotlar 2025–2026 yilgi rasmiy va ommaviy manbalardan olingan.</div>`;
       }
     }
   };
@@ -151,7 +151,7 @@ function DashboardContent() {
             <h1 style={{ margin: '0 0 6px', fontSize: 30, fontWeight: 800 }}>Dashboard</h1>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <span id="role-label" className="role-badge"></span>
-              <span id="welcome-msg" style={{ color: '#64748b', fontSize: 14.5 }}></span>
+              <span id="welcome-msg" style={{ color: 'var(--text-secondary)', fontSize: 14.5 }}></span>
             </div>
           </div>
         </div>
@@ -159,15 +159,15 @@ function DashboardContent() {
         <div className="metrics-grid" id="dashboard-metrics"></div>
 
         {/* Shared live bar */}
-        <div className="card" style={{ marginBottom: 24, padding: '16px 22px', background: 'linear-gradient(90deg,#0f172a,#1e2937)', color: '#fff' }}>
+        <div className="card" style={{ marginBottom: 24, padding: '16px 22px', background: 'var(--live-bar-bg)', color: 'var(--live-bar-text)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 14 }}>
             <div>
               <strong style={{ fontSize: 15 }}>LIVE 2026 Dashboard</strong><br />
               <span style={{ fontSize: 13, opacity: 0.8 }}>Real-time updates • Advanced simulation</span>
             </div>
             <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-              <div><span style={{ fontSize: 12 }}>Inflation</span><br /><strong id="live-inflation">9.2%</strong></div>
-              <div><span style={{ fontSize: 12 }}>Total Collected</span><br /><strong id="live-collected">118.4M</strong></div>
+              <div><span style={{ fontSize: 12, color: 'var(--text-secondary)' }}>Inflation</span><br /><strong id="live-inflation">9.2%</strong></div>
+              <div><span style={{ fontSize: 12, color: 'var(--text-secondary)' }}>Total Collected</span><br /><strong id="live-collected">118.4M</strong></div>
               {!isTenant && <button onClick={() => app.runFullPortfolioAnalysis()} className="btn btn-sm" style={{ background: '#0ea5e9', color: 'white', border: 'none' }}>Advanced Portfolio</button>}
             </div>
           </div>
@@ -177,18 +177,17 @@ function DashboardContent() {
         {isTenant && (
           <div className="role-separated limited-view">
             <div className="card" style={{ maxWidth: 620, borderLeft: '5px solid #0ea5e9' }}>
-              <div className="card-header" style={{ background: '#f0f9ff' }}>
+              <div className="card-header" style={{ background: 'var(--row-highlight-bg)' }}>
                 <span style={{ fontWeight: 700 }}>Mening hisobim (Tenant view)</span>
               </div>
               <div className="card-body">
-                <div id="my-bills"></div>
-                <div style={{ marginTop: 22, paddingTop: 18, borderTop: '1px solid #e2e8f0' }}>
+                <div id="my-bills"></div>                  <div style={{ marginTop: 22, paddingTop: 18, borderTop: '1px solid var(--card-border)' }}>
                   <strong>Keyingi to'lov</strong><br />
                   <span id="tenant-next-due" style={{ fontSize: 23, fontWeight: 800 }}></span>
                   <div style={{ marginTop: 18 }}>
                     <button onClick={markMyPaid} className="btn btn-success">To'lovni tasdiqlash (demo)</button>
                   </div>
-                  <div style={{ marginTop: 12, fontSize: 12, color: '#64748b' }}>
+                  <div style={{ marginTop: 12, fontSize: 12, color: 'var(--text-secondary)' }}>
                     Siz faqat o'zingizning shaxsiy hisobingizni ko'rasiz. Boshqa ma'lumotlar mavjud emas.
                   </div>
                 </div>
@@ -263,9 +262,9 @@ function DashboardContent() {
 
             <div id="tab-content-proofs" style={{ display: 'none' }}>
               <div className="card">
-                <div className="card-header"><strong>✅ Amalda isbot: Nega UzTenantBill?</strong> <span style={{ fontSize: 12, color: '#10b981' }}>(30+ live functions)</span></div>
+                <div className="card-header"><strong>✅ Amalda isbot: Nega UzTenantBill?</strong>                  <span style={{ fontSize: 12, color: 'var(--success)' }}>(30+ live functions)</span></div>
                 <div className="card-body">
-                  <p style={{ marginBottom: 14, fontSize: 14, color: '#64748b' }}>Har bir tugma real natija beradi.</p>
+                  <p style={{ marginBottom: 14, fontSize: 14, color: 'var(--text-secondary)' }}>Har bir tugma real natija beradi.</p>
                   <div className="proof-grid">
                     <button onClick={() => app.showSavingsCalculator()} className="btn btn-primary btn-sm proof-btn">💰 Savings vs Yardi</button>
                     <button onClick={() => app.compareToYardi(1)} className="btn btn-primary btn-sm proof-btn">⚖️ vs Yardi</button>
@@ -292,7 +291,7 @@ function DashboardContent() {
                     <button onClick={() => app.showCollectionHeatmap()} className="btn btn-secondary btn-sm proof-btn">🔥 Heatmap</button>
                     <button onClick={() => app.showFullWhyUsProof()} className="btn btn-primary btn-sm proof-btn">🏆 Nega Biz?</button>
                   </div>
-                  <div style={{ marginTop: 18, fontSize: 13, color: '#166534', background: '#f0fdf4', padding: 10, borderRadius: 8 }}>
+                  <div style={{ marginTop: 18, fontSize: 13, color: 'var(--status-paid-text)', background: 'var(--status-paid-bg)', padding: 10, borderRadius: 8 }}>
                     ✅ Har bir funktsiya haqiqiy UZS hisoblash beradi.
                   </div>
                 </div>
@@ -300,7 +299,7 @@ function DashboardContent() {
             </div>
 
             {/* Ultra suite */}
-            <div style={{ marginTop: 30, padding: 24, background: 'linear-gradient(135deg,#0a0f1c,#1e2937)', borderRadius: 20, color: '#fff', textAlign: 'center' }}>
+            <div style={{ marginTop: 30, padding: 24, background: 'var(--ultra-suite-bg)', borderRadius: 20, color: 'var(--ultra-suite-text)', textAlign: 'center' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
                 <div>
                   <strong style={{ fontSize: 18 }}>🚀 ULTRA ENTERPRISE SUITE v75</strong><br />
@@ -315,11 +314,11 @@ function DashboardContent() {
               <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
                 <button onClick={() => app.testAllFunctions()} className="btn btn-primary" style={{ padding: '13px 26px', fontSize: 14.5 }}>▶️ EXTREME SELF-TEST (120+)</button>
                 <button onClick={() => app.forceFixAll()} className="btn btn-secondary" style={{ padding: '11px 20px', fontSize: 13.5 }}>🔧 FORCE FIX ALL</button>
-                <button onClick={() => app.diagnose()} className="btn btn-outline" style={{ padding: '11px 20px', fontSize: 13.5, borderColor: '#64748b', color: '#fff' }}>🔍 DIAGNOSE</button>
-                <button onClick={() => app.showAIRecommendations()} className="btn btn-outline" style={{ padding: '11px 20px', fontSize: 13.5, borderColor: '#64748b', color: '#fff' }}>🤖 AI RECOMMENDATIONS</button>
-                <button onClick={() => app.runComplexSimulation()} className="btn btn-outline" style={{ padding: '11px 20px', fontSize: 13.5, borderColor: '#64748b', color: '#fff' }}>🔬 EXTREME SIM</button>
-                <button onClick={() => app.viewAuditLog()} className="btn btn-outline" style={{ padding: '11px 20px', fontSize: 13.5, borderColor: '#64748b', color: '#fff' }}>📋 AUDIT</button>
-                <button onClick={() => app.applyAIRecommendations()} className="btn btn-outline" style={{ padding: '11px 20px', fontSize: 13.5, borderColor: '#64748b', color: '#fff' }}>⚡ AI OPTIMIZE ALL</button>
+                <button onClick={() => app.diagnose()} className="btn btn-outline" style={{ padding: '11px 20px', fontSize: 13.5, borderColor: 'var(--btn-outline-border)', color: 'var(--ultra-suite-text)' }}>🔍 DIAGNOSE</button>
+                <button onClick={() => app.showAIRecommendations()} className="btn btn-outline" style={{ padding: '11px 20px', fontSize: 13.5, borderColor: 'var(--btn-outline-border)', color: 'var(--ultra-suite-text)' }}>🤖 AI RECOMMENDATIONS</button>
+                <button onClick={() => app.runComplexSimulation()} className="btn btn-outline" style={{ padding: '11px 20px', fontSize: 13.5, borderColor: 'var(--btn-outline-border)', color: 'var(--ultra-suite-text)' }}>🔬 EXTREME SIM</button>
+                <button onClick={() => app.viewAuditLog()} className="btn btn-outline" style={{ padding: '11px 20px', fontSize: 13.5, borderColor: 'var(--btn-outline-border)', color: 'var(--ultra-suite-text)' }}>📋 AUDIT</button>
+                <button onClick={() => app.applyAIRecommendations()} className="btn btn-outline" style={{ padding: '11px 20px', fontSize: 13.5, borderColor: 'var(--btn-outline-border)', color: 'var(--ultra-suite-text)' }}>⚡ AI OPTIMIZE ALL</button>
               </div>
             </div>
 
@@ -329,13 +328,13 @@ function DashboardContent() {
                 <button onClick={() => app.renderLiveTimeline()} className="btn btn-sm btn-secondary">Refresh Timeline</button>
               </div>
               <div className="card-body">
-                <div id="live-timeline" style={{ height: 130, background: '#f8fafc', borderRadius: 14, padding: '12px 12px 10px', display: 'flex', alignItems: 'flex-end', gap: 4, overflow: 'hidden' }}></div>
+                <div id="live-timeline" style={{ height: 130, background: 'var(--timeline-bg)', borderRadius: 14, padding: '12px 12px 10px', display: 'flex', alignItems: 'flex-end', gap: 4, overflow: 'hidden' }}></div>
               </div>
             </div>
           </>
         )}
 
-        <div style={{ marginTop: 26, fontSize: 12, color: '#64748b', textAlign: 'center' }}>
+        <div style={{ marginTop: 26, fontSize: 12, color: 'var(--text-secondary)', textAlign: 'center' }}>
           2026 Toshkent real ma'lumotlari • UzTenantBill
         </div>
       </div>

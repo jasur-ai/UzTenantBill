@@ -63,7 +63,7 @@ function BillingContent() {
         <div className="page-header">
           <div>
             <h1 style={{ margin: 0, fontSize: 29, fontWeight: 800 }}>Billing &amp; RUBS</h1>
-            <p style={{ color: '#64748b' }}>Real-time utility recovery va avtomatik hisob-kitob</p>
+            <p style={{ color: 'var(--text-secondary)' }}>Real-time utility recovery va avtomatik hisob-kitob</p>
           </div>
         </div>
 
@@ -107,11 +107,11 @@ function BillingContent() {
                 </div>
               </div>
               <div>
-                <div style={{ background: '#f8fafc', padding: 20, borderRadius: 12 }}>
-                  <div style={{ fontSize: 13, color: '#64748b' }}>2026 yilgi real ma'lumotlar</div>
-                  <div style={{ fontSize: 15, marginTop: 8 }}><strong>Sergeli Business Hub:</strong> 24.5M UZS (87 tenants) • 94%</div>
-                  <div style={{ fontSize: 15 }}><strong>Chilonzor Trade Center:</strong> 41.2M UZS (132 tenants) • 97%</div>
-                  <div style={{ marginTop: 10, fontSize: 12.5, color: '#10b981' }}>UzTenantBill RUBS vs Yardi 4.5% fee = 3.7x cheaper</div>
+                <div className="simulator" style={{ padding: 20 }}>
+                  <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>2026 yilgi real ma'lumotlar</div>
+                  <div style={{ fontSize: 15, marginTop: 8, color: 'var(--text)' }}><strong>Sergeli Business Hub:</strong> 24.5M UZS (87 tenants) • 94%</div>
+                  <div style={{ fontSize: 15, color: 'var(--text)' }}><strong>Chilonzor Trade Center:</strong> 41.2M UZS (132 tenants) • 97%</div>
+                  <div style={{ marginTop: 10, fontSize: 12.5, color: 'var(--success)' }}>UzTenantBill RUBS vs Yardi 4.5% fee = 3.7x cheaper</div>
                   <div style={{ marginTop: 10 }}><button onClick={() => app.runFullPortfolioAnalysis()} className="btn btn-sm btn-outline">Run Portfolio Analysis</button></div>
                 </div>
               </div>

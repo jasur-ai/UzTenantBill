@@ -55,7 +55,7 @@ function BuildingsContent() {
         <div className="page-header">
           <div>
             <h1 style={{ margin: 0, fontSize: 29, fontWeight: 800 }}>Binolar</h1>
-            <p style={{ margin: '6px 0 0', color: '#64748b' }}>2026 Toshkent tijorat mulki — real ma'lumotlar</p>
+            <p style={{ margin: '6px 0 0', color: 'var(--text-secondary)' }}>2026 Toshkent tijorat mulki — real ma'lumotlar</p>
           </div>
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <button onClick={() => app.addNewBuilding()} className="btn btn-primary">+ Yangi bino qo'shish</button>

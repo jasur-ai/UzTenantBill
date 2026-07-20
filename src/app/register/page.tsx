@@ -78,9 +78,9 @@ export default function RegisterPage() {
         <div className="auth-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
             <Logo size={28} />
-            <span style={{ fontSize: 22, fontWeight: 700, letterSpacing: -0.5 }}>UzTenantBill</span>
+            <span className="logo-text" style={{ fontSize: 22, fontWeight: 700, letterSpacing: -0.5 }}>UzTenantBill</span>
           </div>
-          <div style={{ fontSize: 14.5, color: '#64748b' }}>Ro'yxatdan o'ting — 30 kun bepul</div>
+          <div style={{ fontSize: 14.5, color: 'var(--text-secondary)' }}>Ro'yxatdan o'ting — 30 kun bepul</div>
         </div>
 
         <div style={{ padding: '26px 32px 30px' }}>
@@ -121,10 +121,10 @@ export default function RegisterPage() {
                 <span onClick={() => togglePasswordVisibility('password', 'reg-eye')} id="reg-eye"
                   style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', cursor: 'pointer', fontSize: 17, opacity: 0.6 }}>👁️</span>
               </div>
-              <div id="password-strength" style={{ marginTop: 6, height: 4, background: '#e2e8f0', borderRadius: 999, overflow: 'hidden', display: 'none' }}>
+              <div id="password-strength" style={{ marginTop: 6, height: 4, background: 'var(--input-border)', borderRadius: 999, overflow: 'hidden', display: 'none' }}>
                 <div id="strength-bar" style={{ height: 4, width: '0%', transition: 'width .3s', background: '#ef4444' }}></div>
               </div>
-              <small id="strength-text" style={{ fontSize: 11, color: '#64748b', display: 'none', marginTop: 3 }}></small>
+              <small id="strength-text" style={{ fontSize: 11, color: 'var(--muted)', display: 'none', marginTop: 3 }}></small>
             </div>
 
             <div style={{ marginBottom: 16 }}>
@@ -133,7 +133,7 @@ export default function RegisterPage() {
                 value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
             </div>
 
-            <div style={{ marginBottom: 16, padding: '10px 14px', background: '#f0f9ff', borderRadius: 10, fontSize: 13.5, color: '#0369a1', border: '1px solid #bae6fd', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ marginBottom: 16, padding: '10px 14px', background: 'var(--row-highlight-bg)', borderRadius: 10, fontSize: 13.5, border: '1px solid var(--card-hover-border)', display: 'flex', alignItems: 'center', gap: 8, color: 'var(--accent)' }}>
               <span>👤</span>
               <span><strong>Ijarachi</strong> sifatida ro'yxatdan o'tmoqdasiz</span>
             </div>
@@ -143,8 +143,8 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <div style={{ marginTop: 20, textAlign: 'center', fontSize: 13.5 }}>
-            Allaqachon hisobingiz bormi? <a href="/login" style={{ color: '#0ea5e9', fontWeight: 600 }}>Kirish</a>
+          <div style={{ marginTop: 20, textAlign: 'center', fontSize: 13.5, color: 'var(--text-secondary)' }}>
+            Allaqachon hisobingiz bormi? <a href="/login" style={{ color: 'var(--accent)', fontWeight: 600 }}>Kirish</a>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <>
       <header className="hero">
-        <nav className="navbar nav-public" style={{ position: 'static', background: 'transparent', backdropFilter: 'none', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <nav className="navbar nav-public" style={{ position: 'static', backdropFilter: 'none' as any }}>
           <div className="nav-content">
             <a href="/" className="logo">
               <span id="logo-container"><Logo size={30} /></span>
@@ -21,7 +21,7 @@ export default function HomePage() {
             </div>
             <div className="nav-right-actions" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               <ThemeToggle />
-              <a href="/login" className="btn btn-secondary btn-sm" style={{ background: 'rgba(255,255,255,0.08)', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.12)' }}>Kirish</a>
+              <a href="/login" className="btn btn-secondary btn-sm">Kirish</a>
               <a href="/register" className="btn btn-primary btn-sm">Bepul ro'yxatdan o'tish</a>
             </div>
           </div>
@@ -41,7 +41,7 @@ export default function HomePage() {
               <a href="/register" className="btn btn-primary" style={{ padding: '16px 42px', fontSize: 15 }}>
                 30 kun bepul sinab ko'rish
               </a>
-              <a href="/login" className="btn btn-secondary" style={{ padding: '16px 36px', fontSize: 15 }}>
+              <a href="/login" className="btn btn-secondary" style={{ padding: '16px 36px', fontSize: 15, background: 'var(--btn-secondary-bg)', color: 'var(--btn-secondary-text)', border: '1px solid var(--btn-secondary-border)' }}>
                 Demo kirish
               </a>
             </div>
@@ -92,10 +92,10 @@ export default function HomePage() {
             <div className="why-card"><strong>10. Ochiq va moslashuvchan</strong><span>Oddiy API va eksport — boshqa tizimlar bilan osongina ulanadi.</span></div>
           </div>
           <div style={{ maxWidth: 1280, margin: '30px auto 0', padding: '0 48px' }}>
-            <div style={{ background: 'white', border: '1px solid #e2e8f0', padding: '18px 24px', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+            <div className="card" style={{ padding: '18px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
               <div>
-                <strong style={{ fontSize: 15 }}>Amalda isbot: 30+ live functions</strong><br />
-                <span style={{ fontSize: 13.5, color: '#64748b' }}>Savings calculator, Yardi comparison, CAM Reconcile, Occupancy uplift, Credit score, Forecast, Telegram bulk, Churn impact — real UZS results.</span>
+                <strong style={{ fontSize: 15, color: 'var(--text)' }}>Amalda isbot: 30+ live functions</strong><br />
+                <span style={{ fontSize: 13.5, color: 'var(--text-secondary)' }}>Savings calculator, Yardi comparison, CAM Reconcile, Occupancy uplift, Credit score, Forecast, Telegram bulk, Churn impact — real UZS results.</span>
               </div>
               <a href="/login" className="btn btn-primary" style={{ padding: '10px 24px', fontSize: 13.5 }}>Dashboardda sinab ko'rish →</a>
             </div>
@@ -107,7 +107,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-header">
             <h2>Hamma uchun qo'shimcha qulayliklar</h2>
-            <p style={{ color: '#64748b', maxWidth: 620, margin: '0 auto' }}>Ijarachilar, kichik mulk egalar va buxgalterlar uchun maxsus o'ylangan 10 ta jihat</p>
+            <p style={{ color: 'var(--text-secondary)', maxWidth: 620, margin: '0 auto' }}>Ijarachilar, kichik mulk egalar va buxgalterlar uchun maxsus o'ylangan 10 ta jihat</p>
           </div>
           <div className="convenience-grid">
             <div className="conv-card"><strong>1. Shaxsiy tenant kabineti</strong> Faqat o'zingizning hisobingiz — boshqa hech narsa.</div>
@@ -132,25 +132,25 @@ export default function HomePage() {
           </div>
           <div className="feature-grid">
             <div className="card feature-card">
-              <div style={{ width: 46, height: 46, background: '#f0f9ff', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+              <div style={{ width: 46, height: 46, background: 'var(--feature-icon-bg)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
                 <svg width="24" height="24" fill="#0ea5e9" viewBox="0 0 24 24"><path d="M3 3v18h18V3H3zm16 16H5V5h14v14zM7 7h2v10H7V7zm4 0h2v10h-2V7zm4 0h2v10h-2V7z" /></svg>
               </div>
-              <h3 style={{ fontSize: 19, margin: '0 0 8px' }}>Advanced RUBS Engine</h3>
-              <p style={{ color: '#64748b', fontSize: 14.5 }}>Area, Occupancy, Power va Combined hisob-kitoblar — hardware-siz.</p>
+              <h3 style={{ fontSize: 19, margin: '0 0 8px', color: 'var(--text)' }}>Advanced RUBS Engine</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 14.5 }}>Area, Occupancy, Power va Combined hisob-kitoblar — hardware-siz.</p>
             </div>
             <div className="card feature-card">
-              <div style={{ width: 46, height: 46, background: '#f0f9ff', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+              <div style={{ width: 46, height: 46, background: 'var(--feature-icon-bg)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
                 <svg width="24" height="24" fill="#0ea5e9" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
               </div>
-              <h3 style={{ fontSize: 19, margin: '0 0 8px' }}>AI OCR + Smart Processing</h3>
-              <p style={{ color: '#64748b', fontSize: 14.5 }}>97% aniqlik bilan kommunal hisob-kitoblarni avtomatik o'qish.</p>
+              <h3 style={{ fontSize: 19, margin: '0 0 8px', color: 'var(--text)' }}>AI OCR + Smart Processing</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 14.5 }}>97% aniqlik bilan kommunal hisob-kitoblarni avtomatik o'qish.</p>
             </div>
             <div className="card feature-card">
-              <div style={{ width: 46, height: 46, background: '#f0f9ff', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+              <div style={{ width: 46, height: 46, background: 'var(--feature-icon-bg)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
                 <svg width="24" height="24" fill="#0ea5e9" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 14H8v-2h8v2zm0-4H8V8h8v4z" /></svg>
               </div>
-              <h3 style={{ fontSize: 19, margin: '0 0 8px' }}>Telegram + SMS Penalties</h3>
-              <p style={{ color: '#64748b', fontSize: 14.5 }}>Kech to'lovchilarga avtomatik eslatma va jarima hisoblash.</p>
+              <h3 style={{ fontSize: 19, margin: '0 0 8px', color: 'var(--text)' }}>Telegram + SMS Penalties</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 14.5 }}>Kech to'lovchilarga avtomatik eslatma va jarima hisoblash.</p>
             </div>
           </div>
         </div>
@@ -195,21 +195,21 @@ export default function HomePage() {
               <div className="step-number">1</div>
               <div>
                 <strong style={{ fontSize: 17 }}>Ro'yxatdan o'ting</strong><br />
-                <span style={{ color: '#64748b', fontSize: 14.5 }}>Ijarachi sifatida ro'yxatdan o'tish va darhol boshlash</span>
+                <span style={{ fontSize: 14.5 }}>Ijarachi sifatida ro'yxatdan o'tish va darhol boshlash</span>
               </div>
             </div>
             <div className="step">
               <div className="step-number">2</div>
               <div>
                 <strong style={{ fontSize: 17 }}>Binolaringizni qo'shing</strong><br />
-                <span style={{ color: '#64748b', fontSize: 14.5 }}>Real Toshkent ma'lumotlarini yuklang yoki qo'lda kiriting</span>
+                <span style={{ fontSize: 14.5 }}>Real Toshkent ma'lumotlarini yuklang yoki qo'lda kiriting</span>
               </div>
             </div>
             <div className="step">
               <div className="step-number">3</div>
               <div>
                 <strong style={{ fontSize: 17 }}>RUBS &amp; undiring</strong><br />
-                <span style={{ color: '#64748b', fontSize: 14.5 }}>Avtomatik hisob-kitob, eslatmalar va hisobotlar</span>
+                <span style={{ fontSize: 14.5 }}>Avtomatik hisob-kitob, eslatmalar va hisobotlar</span>
               </div>
             </div>
           </div>
@@ -218,16 +218,15 @@ export default function HomePage() {
 
       <div className="final-cta">
         <div className="container">
-          <h2>Bugun boshlang. Darhol natija.</h2>
-          <p style={{ color: '#64748b', marginBottom: 32 }}>Kredit karta talab qilinmaydi. 30 kun bepul sinov.</p>
+          <h2>Bugun boshlang. Darhol natija.</h2>            <p style={{ color: 'var(--text-secondary)', marginBottom: 32 }}>Kredit karta talab qilinmaydi. 30 kun bepul sinov.</p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center' }}>
             <a href="/register" className="btn btn-primary" style={{ padding: '17px 46px', fontSize: 15.5 }}>Ro'yxatdan o'tish</a>
-            <a href="/login" className="btn" style={{ padding: '17px 40px', fontSize: 15.5, borderColor: '#475569', color: '#e2e8f0', background: 'rgba(255,255,255,0.07)' }}>Demo bilan kirish</a>
+            <a href="/login" className="btn btn-outline" style={{ padding: '17px 40px', fontSize: 15.5 }}>Demo bilan kirish</a>
           </div>
         </div>
       </div>
 
-      <footer style={{ background: '#0f172a', padding: '28px 0', fontSize: 13, color: '#64748b', textAlign: 'center', borderTop: '1px solid #1e2937' }}>
+      <footer className="footer" style={{ padding: '28px 0', fontSize: 13, color: 'var(--footer-text)', textAlign: 'center', borderTop: '1px solid var(--footer-border)', background: 'var(--footer-bg)' }}>
         © 2026 UzTenantBill — Professional Tenant Utility Platform • Toshkent, O'zbekiston
       </footer>
 

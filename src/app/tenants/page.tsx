@@ -55,7 +55,7 @@ function TenantsContent() {
         <div className="page-header">
           <div>
             <h1 style={{ margin: 0, fontSize: 29, fontWeight: 800 }}>Ijarachilar</h1>
-            <p style={{ margin: '6px 0 0', color: '#64748b' }}>Barcha ijarachilar va to'lov holati</p>
+            <p style={{ margin: '6px 0 0', color: 'var(--text-secondary)' }}>Barcha ijarachilar va to'lov holati</p>
           </div>
           <div className="admin-only">
             <button onClick={() => app.sendBulkReminders()} className="btn btn-secondary">Ommaviy eslatma</button>
@@ -90,7 +90,7 @@ function TenantsContent() {
           </div>
         </div>
 
-        <div className="admin-only" style={{ marginTop: 12, fontSize: 12.5, color: '#64748b' }}>
+        <div className="admin-only" style={{ marginTop: 12, fontSize: 12.5, color: 'var(--text-secondary)' }}>
           Faqat admin va buxgalter to'liq ma'lumotlarni ko'radi.
         </div>
       </div>

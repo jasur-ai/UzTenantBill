@@ -49,15 +49,15 @@ function LoginContent() {
         <div className="auth-header">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 10 }}>
             <div id="logo-container"><Logo size={32} /></div>
-            <span style={{ fontSize: 26, fontWeight: 800, letterSpacing: -1, color: '#0f172a' }}>UzTenantBill</span>
+            <span className="logo-text" style={{ fontSize: 26, fontWeight: 800, letterSpacing: -1 }}>UzTenantBill</span>
           </div>
-          <div style={{ fontSize: 14, color: '#64748b' }}>2026 Toshkent tijorat mulki platformasi</div>
+          <div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>2026 Toshkent tijorat mulki platformasi</div>
         </div>
 
         <div style={{ padding: '28px 32px 32px' }}>
           <div style={{ marginBottom: 22 }}>
             <h2 style={{ margin: '0 0 4px 0', fontSize: 23, fontWeight: 800 }}>Kirish</h2>
-            <p style={{ margin: 0, color: '#64748b', fontSize: 14.5 }}>Hisobingizga kiring</p>
+            <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: 14.5 }}>Hisobingizga kiring</p>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -99,11 +99,9 @@ function LoginContent() {
             <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: 14, fontSize: 15.5, fontWeight: 700, marginTop: 8 }}>
               Kirish
             </button>
-          </form>
-
-          <div className="demo-box" style={{ marginTop: 24 }}>
-            <div style={{ fontWeight: 700, marginBottom: 8, color: '#334155', fontSize: 13.5 }}>Demo hisoblar</div>
-            <div style={{ fontSize: 13.2, color: '#475569', lineHeight: 1.65 }}>
+          </form>            <div className="demo-box" style={{ marginTop: 24 }}>
+            <div style={{ fontWeight: 700, marginBottom: 8, fontSize: 13.5, color: 'var(--text)' }}>Demo hisoblar</div>
+            <div style={{ fontSize: 13.2, color: 'var(--text-secondary)', lineHeight: 1.65 }}>
               <div><strong>Admin:</strong> admin@uztenantbill.uz / admin123</div>
               <div><strong>Accountant:</strong> accountant@uztenantbill.uz / account123</div>
               <div><strong>Tenant:</strong> tenant@uztenantbill.uz / tenant123</div>
@@ -111,7 +109,7 @@ function LoginContent() {
           </div>
 
           <div style={{ marginTop: 20, textAlign: 'center', fontSize: 14 }}>
-            Hisobingiz yo'qmi? <a href="/register" style={{ color: '#0ea5e9', fontWeight: 700 }}>Ro'yxatdan o'tish</a>
+            Hisobingiz yo'qmi? <a href="/register" style={{ color: 'var(--accent)', fontWeight: 700 }}>Ro'yxatdan o'tish</a>
           </div>
         </div>
       </div>
