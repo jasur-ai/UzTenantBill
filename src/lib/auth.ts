@@ -108,13 +108,13 @@ function updateNavbar(): void {
 
   if (current) {
     navUser.innerHTML = `
-      <div class="user-info" style="display:flex; align-items:center; gap:12px;">
-        <div style="text-align:right; line-height:1.1;">
-          <strong style="font-size:14px;">${current.fullName}</strong><br>
-          <span style="font-size:11.5px; color:#64748b;">${current.company}</span>
+      <div class="user-info">
+        <div class="user-details">
+          <strong>${current.fullName}</strong>
+          <span>${current.company}</span>
         </div>
-        <span class="role-badge">${current.role}</span>
-        <button onclick="window.location.href='/login'; localStorage.removeItem('uztenantbill_current')" class="btn btn-sm btn-secondary" style="padding:6px 15px; font-size:13px;">Chiqish</button>
+        <span class="role-badge" style="background:rgba(255,255,255,0.1); color:#cbd5e1; padding:3px 10px; border-radius:999px; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.4px;">${current.role === 'admin' ? '👑 Admin' : current.role === 'accountant' ? '📊 Hisobchi' : '👤 Ijarachi'}</span>
+        <button onclick="window.location.href='/login'; localStorage.removeItem('uztenantbill_current')" class="btn-logout">🚪 Chiqish</button>
       </div>
     `;
   }

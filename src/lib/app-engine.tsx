@@ -615,10 +615,18 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     const container = document.getElementById('live-timeline');
     if (!container) return;
     const total = buildingsData.reduce((s, b) => s + b.monthly_utility_uzs, 0);
+    const monthLabels = ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun'];
     const vals = Array.from({ length: 6 }, (_, i) => Math.round(total * (1 + (i * 0.048) + (Math.random() - 0.5) * 0.06)));
+    const maxVal = Math.max(...vals);
     container.innerHTML = vals.map((v, idx) => {
-      const h = Math.max(28, Math.round((v / Math.max(...vals)) * 78));
-      return `<div onclick="window.__uzApp__.openTimelineDetail(${idx}, ${v})" style="flex:1;background:linear-gradient(#0ea5e9,#0284c8);height:${h}px;border-radius:6px;position:relative;cursor:pointer"><div style="position:absolute;bottom:-16px;font-size:10px;width:100%;text-align:center;color:#64748b">${idx + 1}</div></div>`;
+      const barH = Math.round((v / maxVal) * 68);
+      return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%">
+        <div style="flex:1;display:flex;align-items:flex-end;justify-content:center;width:100%">
+          <div onclick="window.__uzApp__.openTimelineDetail(${idx}, ${v})" style="width:80%;background:linear-gradient(180deg,#0ea5e9,#0369a1);height:${barH}px;border-radius:4px 4px 0 0;cursor:pointer;transition:all 0.2s;min-height:6px;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"></div>
+        </div>
+        <div style="font-size:9px;color:#64748b;font-weight:600;line-height:1;margin-top:4px">${monthLabels[idx]}</div>
+        <div style="font-size:8px;color:#94a3b8;line-height:1;margin-top:2px">${(v / 1000000).toFixed(1)}M</div>
+      </div>`;
     }).join('');
   }, [buildingsData]);
 

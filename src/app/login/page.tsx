@@ -25,13 +25,6 @@ function LoginContent() {
     }
   };
 
-  const quickDemoLogin = () => {
-    const result = UzAuth.loginUser('admin@uztenantbill.uz', 'admin123');
-    if (result.success) {
-      window.location.href = '/dashboard';
-    }
-  };
-
   const togglePasswordVisibility = (inputId: string, eyeId: string) => {
     const input = document.getElementById(inputId) as HTMLInputElement;
     const eye = document.getElementById(eyeId);
@@ -108,15 +101,12 @@ function LoginContent() {
           </form>
 
           <div className="demo-box" style={{ marginTop: 24 }}>
-            <div style={{ fontWeight: 700, marginBottom: 8, color: '#334155', fontSize: 13.5 }}>Demo hisoblar (darhol kirish)</div>
+            <div style={{ fontWeight: 700, marginBottom: 8, color: '#334155', fontSize: 13.5 }}>Demo hisoblar</div>
             <div style={{ fontSize: 13.2, color: '#475569', lineHeight: 1.65 }}>
               <div><strong>Admin:</strong> admin@uztenantbill.uz / admin123</div>
               <div><strong>Accountant:</strong> accountant@uztenantbill.uz / account123</div>
               <div><strong>Tenant:</strong> tenant@uztenantbill.uz / tenant123</div>
             </div>
-            <button onClick={quickDemoLogin} className="btn btn-secondary" style={{ marginTop: 12, width: '100%', fontSize: 13, padding: '8px 12px' }}>
-              Demo bilan boshlash (Admin)
-            </button>
           </div>
 
           <div style={{ marginTop: 20, textAlign: 'center', fontSize: 14 }}>

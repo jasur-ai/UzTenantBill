@@ -1,52 +1,32 @@
 'use client';
 
-import { useEffect } from 'react';
 import Logo from '@/components/Logo';
-import { UzAuth } from '@/lib/auth';
 
 export default function HomePage() {
-  useEffect(() => {
-    const logoContainer = document.getElementById('logo-container');
-    if (logoContainer) {
-      // Logo is rendered via React below
-    }
-
-    const current = UzAuth.getCurrentUser();
-    if (current) {
-      const navRight = document.querySelector('.nav-right-actions');
-      if (navRight) {
-        navRight.innerHTML = `
-          <span style="color:#94a3b8; font-size:13px; margin-right:12px;">Xush kelibsiz, ${current.fullName.split(' ')[0]}</span>
-          <a href="/dashboard" class="btn btn-primary btn-sm">Dashboardga o'tish</a>
-        `;
-      }
-    }
-  }, []);
-
   return (
     <>
-      <nav className="navbar nav-public">
-        <div className="nav-content">
-          <a href="/" className="logo">
-            <span id="logo-container"><Logo size={30} /></span>
-            <span>UzTenantBill</span>
-          </a>
-          <div className="nav-links">
-            <a href="#why">Nima uchun biz?</a>
-            <a href="#features">Imkoniyatlar</a>
-            <a href="#data">2026 Ma'lumotlar</a>
-            <a href="#how">Qanday ishlaydi</a>
-          </div>
-          <div className="nav-right-actions" style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-            <a href="/login" className="btn btn-secondary btn-sm">Kirish</a>
-            <a href="/register" className="btn btn-primary btn-sm">Bepul ro'yxatdan o'tish</a>
-          </div>
-        </div>
-      </nav>
-
       <header className="hero">
-        <div className="container">
-          <div className="hero-content">
+        <nav className="navbar nav-public" style={{ position: 'static', background: 'transparent', backdropFilter: 'none', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="nav-content">
+            <a href="/" className="logo">
+              <span id="logo-container"><Logo size={30} /></span>
+              <span>UzTenantBill</span>
+            </a>
+            <div className="nav-links">
+              <a href="#why">Nima uchun biz?</a>
+              <a href="#features">Imkoniyatlar</a>
+              <a href="#data">2026 Ma'lumotlar</a>
+              <a href="#how">Qanday ishlaydi</a>
+            </div>
+            <div className="nav-right-actions" style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+              <a href="/login" className="btn btn-secondary btn-sm" style={{ background: 'rgba(255,255,255,0.08)', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.12)' }}>Kirish</a>
+              <a href="/register" className="btn btn-primary btn-sm">Bepul ro'yxatdan o'tish</a>
+            </div>
+          </div>
+        </nav>
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+          <div className="container">
+            <div className="hero-content">
             <div className="hero-badge">
               2026 Toshkent • Real tijorat mulki
             </div>
@@ -70,6 +50,11 @@ export default function HomePage() {
               <div className="stat"><strong>142.4M</strong><span>UZS / oy</span></div>
             </div>
           </div>
+        </div>
+      </div>
+        <div className="scroll-indicator" onClick={() => document.getElementById('why')?.scrollIntoView({ behavior: 'smooth' })}>
+          <span>Pastga</span>
+          <div className="arrow"></div>
         </div>
       </header>
 
@@ -208,7 +193,7 @@ export default function HomePage() {
               <div className="step-number">1</div>
               <div>
                 <strong style={{ fontSize: 17 }}>Ro'yxatdan o'ting</strong><br />
-                <span style={{ color: '#64748b', fontSize: 14.5 }}>Admin, Accountant yoki Tenant roliga kirish</span>
+                <span style={{ color: '#64748b', fontSize: 14.5 }}>Ijarachi sifatida ro'yxatdan o'tish va darhol boshlash</span>
               </div>
             </div>
             <div className="step">
@@ -235,7 +220,7 @@ export default function HomePage() {
           <p style={{ color: '#64748b', marginBottom: 32 }}>Kredit karta talab qilinmaydi. 30 kun bepul sinov.</p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center' }}>
             <a href="/register" className="btn btn-primary" style={{ padding: '17px 46px', fontSize: 15.5 }}>Ro'yxatdan o'tish</a>
-            <a href="/login" className="btn btn-secondary" style={{ padding: '17px 40px', fontSize: 15.5, borderColor: '#334155', color: 'white' }}>Demo bilan kirish</a>
+            <a href="/login" className="btn" style={{ padding: '17px 40px', fontSize: 15.5, borderColor: '#475569', color: '#e2e8f0', background: 'rgba(255,255,255,0.07)' }}>Demo bilan kirish</a>
           </div>
         </div>
       </div>
@@ -251,40 +236,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      <style jsx>{`
-        .nav-public { background: #0f172a; border-bottom: 1px solid #1e2937; backdrop-filter: blur(24px); }
-        .hero-badge {
-          display: inline-flex; align-items: center; gap: 8px;
-          background: rgba(15,23,42,.72); color: #67c0f3; font-size: 13px; font-weight: 700;
-          padding: 6px 18px; border-radius: 9999px; margin-bottom: 18px;
-          border: 1px solid rgba(103,192,243,.25); letter-spacing: .5px;
-        }
-        .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 44px; }
-        .trusted { background: #f8fafc; padding: 32px 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
-        .trusted-label { text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; color: #64748b; margin-bottom: 14px; }
-        .trusted-logos { display: flex; justify-content: center; gap: 46px; flex-wrap: wrap; font-size: 14.5px; font-weight: 600; color: #475569; opacity: 0.9; }
-        .why-section { background: #f8fafc; }
-        .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(295px, 1fr)); gap: 18px; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
-        .why-card { padding: 22px 20px; border-radius: 14px; background: white; border: 1px solid #e2e8f0; transition: all .25s ease; }
-        .why-card:hover { transform: translateY(-2px); border-color: #0ea5e9; box-shadow: 0 10px 25px -8px rgb(15 23 42 / 0.08); }
-        .why-card strong { display: block; font-size: 14.5px; margin-bottom: 5px; color: #0f172a; font-weight: 700; }
-        .why-card span { font-size: 13.5px; color: #64748b; line-height: 1.45; }
-        .convenience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
-        .conv-card { padding: 15px 18px; border-radius: 11px; background: #f8fafc; border: 1px solid #e2e8f0; font-size: 14px; }
-        .conv-card strong { display: block; margin-bottom: 3px; color: #0f172a; font-weight: 600; }
-        .section { padding: 82px 0; }
-        .section-header { text-align: center; margin-bottom: 42px; }
-        .section-header h2 { font-size: 34px; font-weight: 800; letter-spacing: -1.6px; margin: 4px 0; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
-        .feature-card { padding: 30px 26px; border-radius: 16px; background: white; border: 1px solid #e2e8f0; transition: all .3s ease; }
-        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px -10px rgb(15 23 42 / 0.1); }
-        .real-data { background: #0f172a; color: #e2e8f0; padding: 68px 0; }
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
-        .step { display: flex; gap: 16px; }
-        .step-number { width: 34px; height: 34px; background: #0ea5e9; color: white; font-weight: 800; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14.5px; }
-        .final-cta { background: #0f172a; color: #fff; padding: 76px 0; text-align: center; }
-        .final-cta h2 { font-size: 34px; font-weight: 800; margin-bottom: 10px; }
-      `}</style>
     </>
   );
 }

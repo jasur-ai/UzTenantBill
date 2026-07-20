@@ -1,19 +1,21 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Logo from '@/components/Logo';
 import { useApp } from '@/lib/app-engine';
 import { UzAuth } from '@/lib/auth';
+import type { User } from '@/lib/types';
 
 function ReportsContent() {
   const app = useApp();
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   useEffect(() => {
     const user = UzAuth.protectPage();
     if (!user) return;
+    setCurrentUser(user);
     UzAuth.updateNavbar();
 
-    document.body.classList.add('role-' + user.role);
     if (user.role === 'tenant') {
       document.querySelectorAll('.admin-only').forEach(el => (el as HTMLElement).style.display = 'none');
     }
@@ -52,8 +54,8 @@ function ReportsContent() {
           </a>
           <div className="nav-links">
             <a href="/dashboard">Dashboard</a>
-            <a href="/buildings">Binolar</a>
-            <a href="/tenants">Ijarachilar</a>
+            {currentUser?.role !== 'tenant' && <a href="/buildings">Binolar</a>}
+            {currentUser?.role !== 'tenant' && <a href="/tenants">Ijarachilar</a>}
             <a href="/billing">Billing</a>
             <a href="/reports" className="active">Hisobotlar</a>
           </div>

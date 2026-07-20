@@ -1,27 +1,31 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Logo from '@/components/Logo';
 import { useApp } from '@/lib/app-engine';
 import { UzAuth } from '@/lib/auth';
+import type { User } from '@/lib/types';
 
 function TenantsContent() {
   const app = useApp();
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   useEffect(() => {
     const user = UzAuth.protectPage();
     if (!user) return;
-    UzAuth.updateNavbar();
+    setCurrentUser(user);
 
-    document.body.classList.add('role-' + user.role);
+    // Tenantlarni qayta yo'naltirish
+    if (user.role === 'tenant') {
+      window.location.href = '/dashboard';
+      return;
+    }
+
+    UzAuth.updateNavbar();
 
     setTimeout(() => {
       if (app.renderTenantsTable) app.renderTenantsTable();
     }, 80);
-
-    if (user.role === 'tenant') {
-      document.querySelectorAll('.admin-only').forEach(el => (el as HTMLElement).style.display = 'none');
-    }
   }, []);
 
   return (
@@ -34,7 +38,7 @@ function TenantsContent() {
           </a>
           <div className="nav-links">
             <a href="/dashboard">Dashboard</a>
-            <a href="/buildings">Binolar</a>
+            {currentUser?.role !== 'tenant' && <a href="/buildings">Binolar</a>}
             <a href="/tenants" className="active">Ijarachilar</a>
             <a href="/billing">Billing</a>
             <a href="/reports">Hisobotlar</a>

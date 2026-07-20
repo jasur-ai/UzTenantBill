@@ -1,17 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Logo from '@/components/Logo';
 import { UzAuth } from '@/lib/auth';
 
 export default function RegisterPage() {
-  const [fullName, setFullName] = useState('Alisher Karimov');
-  const [company, setCompany] = useState('Sergeli Business Hub');
-  const [email, setEmail] = useState('manager@demo.uz');
-  const [phone, setPhone] = useState('+998901234567');
+  const [fullName, setFullName] = useState('');
+  const [company, setCompany] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('+998');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState('admin');
+  const role = 'tenant';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,12 +86,12 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit}>
             <div style={{ marginBottom: 16 }}>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 5 }}>To'liq ism</label>
-              <input type="text" className="premium-input" required placeholder="Alisher Karimov" value={fullName} onChange={e => setFullName(e.target.value)} />
+              <input type="text" className="premium-input" required placeholder="Ism Familiya" value={fullName} onChange={e => setFullName(e.target.value)} />
             </div>
 
             <div style={{ marginBottom: 16 }}>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 5 }}>Kompaniya / Bino nomi</label>
-              <input type="text" className="premium-input" required placeholder="Sergeli Business Hub" value={company} onChange={e => setCompany(e.target.value)} />
+              <input type="text" className="premium-input" required placeholder="Masalan: Chilonzor Trade Center" value={company} onChange={e => setCompany(e.target.value)} />
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
@@ -132,13 +132,9 @@ export default function RegisterPage() {
                 value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
             </div>
 
-            <div style={{ marginBottom: 16 }}>
-              <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 5 }}>Rol</label>
-              <select className="premium-input" style={{ height: 42 }} value={role} onChange={e => setRole(e.target.value)}>
-                <option value="admin">Administrator</option>
-                <option value="accountant">Buxgalter / Accountant</option>
-                <option value="tenant">Ijarachi</option>
-              </select>
+            <div style={{ marginBottom: 16, padding: '10px 14px', background: '#f0f9ff', borderRadius: 10, fontSize: 13.5, color: '#0369a1', border: '1px solid #bae6fd', display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span>👤</span>
+              <span><strong>Ijarachi</strong> sifatida ro'yxatdan o'tmoqdasiz</span>
             </div>
 
             <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: 13, marginTop: 10, fontSize: 15, fontWeight: 700 }}>

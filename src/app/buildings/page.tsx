@@ -1,28 +1,31 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Logo from '@/components/Logo';
 import { useApp } from '@/lib/app-engine';
 import { UzAuth } from '@/lib/auth';
+import type { User } from '@/lib/types';
 
 function BuildingsContent() {
   const app = useApp();
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   useEffect(() => {
     const user = UzAuth.protectPage();
     if (!user) return;
+    setCurrentUser(user);
+
+    // Tenantlarni qayta yo'naltirish
+    if (user.role === 'tenant') {
+      window.location.href = '/dashboard';
+      return;
+    }
+
     UzAuth.updateNavbar();
 
     setTimeout(() => {
       if (app.renderBuildingsTable) app.renderBuildingsTable();
     }, 80);
-
-    setTimeout(() => {
-      if (user.role === 'tenant') {
-        document.querySelectorAll('.admin-only, button[onclick*="addNewBuilding"], button[onclick*="uploadOCR"]').forEach(el => (el as HTMLElement).style.display = 'none');
-        document.body.classList.add('role-tenant');
-      }
-    }, 120);
   }, []);
 
   return (
@@ -36,7 +39,7 @@ function BuildingsContent() {
           <div className="nav-links">
             <a href="/dashboard">Dashboard</a>
             <a href="/buildings" className="active">Binolar</a>
-            <a href="/tenants">Ijarachilar</a>
+            {currentUser?.role !== 'tenant' && <a href="/tenants">Ijarachilar</a>}
             <a href="/billing">Billing</a>
             <a href="/reports">Hisobotlar</a>
           </div>
