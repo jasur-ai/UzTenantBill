@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { AppProvider } from '@/lib/app-engine';
+import { ThemeProvider } from '@/lib/theme';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -31,9 +32,11 @@ export default function RootLayout({
   return (
     <html lang="uz" suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable}`} style={{ fontFamily: "'Inter', system-ui, -apple-system, sans-serif" }}>
-        <AppProvider>
-          {children}
-        </AppProvider>
+        <ThemeProvider>
+          <AppProvider>
+            {children}
+          </AppProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

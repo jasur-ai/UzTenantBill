@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Logo from '@/components/Logo';
 import { useApp } from '@/lib/app-engine';
 import { UzAuth } from '@/lib/auth';
+import { ThemeToggle } from '@/lib/theme';
 import type { User } from '@/lib/types';
 
 function ReportsContent() {
@@ -59,7 +60,10 @@ function ReportsContent() {
             <a href="/billing">Billing</a>
             <a href="/reports" className="active">Hisobotlar</a>
           </div>
-          <div id="nav-user"></div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <ThemeToggle />
+            <div id="nav-user"></div>
+          </div>
         </div>
       </nav>
 

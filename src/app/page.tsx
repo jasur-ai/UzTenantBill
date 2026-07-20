@@ -1,6 +1,7 @@
 'use client';
 
 import Logo from '@/components/Logo';
+import { ThemeToggle } from '@/lib/theme';
 
 export default function HomePage() {
   return (
@@ -18,7 +19,8 @@ export default function HomePage() {
               <a href="#data">2026 Ma'lumotlar</a>
               <a href="#how">Qanday ishlaydi</a>
             </div>
-            <div className="nav-right-actions" style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <div className="nav-right-actions" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+              <ThemeToggle />
               <a href="/login" className="btn btn-secondary btn-sm" style={{ background: 'rgba(255,255,255,0.08)', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.12)' }}>Kirish</a>
               <a href="/register" className="btn btn-primary btn-sm">Bepul ro'yxatdan o'tish</a>
             </div>
@@ -158,25 +160,25 @@ export default function HomePage() {
         <div className="container">
           <div className="section-header">
             <div style={{ fontSize: 12.5, fontWeight: 700, color: '#64748b', letterSpacing: 1.2 }}>2026 REAL MA'LUMOTLAR</div>
-            <h2 style={{ color: 'white', fontSize: 34, margin: '6px 0' }}>Toshkent tijorat mulki statistikasi</h2>
+            <h2 style={{ fontSize: 34, margin: '6px 0' }}>Toshkent tijorat mulki statistikasi</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px,1fr))', gap: 22, maxWidth: 1280, margin: '0 auto' }}>
-            <div className="card" style={{ background: '#1e2937', border: 'none', color: '#e2e8f0' }}>
+            <div className="card" style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(255,255,255,0.06)', color: '#cbd5e1', backdropFilter: 'blur(4px)' }}>
               <div className="card-body">
-                <div style={{ fontSize: 15, color: '#64748b' }}><strong style={{ fontSize: 28, color: '#fff' }}>94%</strong><br />Sergeli Business Hub</div>
-                <div style={{ marginTop: 10, fontSize: 13.5 }}>87 ijarachi • 24.5M UZS • 94% yig'ish</div>
+                <div style={{ fontSize: 14, color: '#94a3b8' }}><strong style={{ fontSize: 26, color: '#38bdf8', fontWeight: 900 }}>94%</strong><br /><span style={{ color: '#e2e8f0', fontWeight: 600 }}>Sergeli Business Hub</span></div>
+                <div style={{ marginTop: 8, fontSize: 13, color: '#94a3b8' }}>87 ijarachi • 24.5M UZS • 94% yig'ish</div>
               </div>
             </div>
-            <div className="card" style={{ background: '#1e2937', border: 'none', color: '#e2e8f0' }}>
+            <div className="card" style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(255,255,255,0.06)', color: '#cbd5e1', backdropFilter: 'blur(4px)' }}>
               <div className="card-body">
-                <div style={{ fontSize: 15, color: '#64748b' }}><strong style={{ fontSize: 28, color: '#fff' }}>97%</strong><br />Chilonzor Trade Center</div>
-                <div style={{ marginTop: 10, fontSize: 13.5 }}>132 ijarachi • 41.2M UZS • 97% yig'ish</div>
+                <div style={{ fontSize: 14, color: '#94a3b8' }}><strong style={{ fontSize: 26, color: '#38bdf8', fontWeight: 900 }}>97%</strong><br /><span style={{ color: '#e2e8f0', fontWeight: 600 }}>Chilonzor Trade Center</span></div>
+                <div style={{ marginTop: 8, fontSize: 13, color: '#94a3b8' }}>132 ijarachi • 41.2M UZS • 97% yig'ish</div>
               </div>
             </div>
-            <div className="card" style={{ background: '#1e2937', border: 'none', color: '#e2e8f0' }}>
+            <div className="card" style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(255,255,255,0.06)', color: '#cbd5e1', backdropFilter: 'blur(4px)' }}>
               <div className="card-body">
-                <div style={{ fontSize: 15, color: '#64748b' }}><strong style={{ fontSize: 28, color: '#fff' }}>71%</strong><br />Yakkasaroy Industrial Park</div>
-                <div style={{ marginTop: 10, fontSize: 13.5 }}>54 ijarachi • 18.7M UZS • 71% yig'ish</div>
+                <div style={{ fontSize: 14, color: '#94a3b8' }}><strong style={{ fontSize: 26, color: '#38bdf8', fontWeight: 900 }}>71%</strong><br /><span style={{ color: '#e2e8f0', fontWeight: 600 }}>Yakkasaroy Industrial Park</span></div>
+                <div style={{ marginTop: 8, fontSize: 13, color: '#94a3b8' }}>54 ijarachi • 18.7M UZS • 71% yig'ish</div>
               </div>
             </div>
           </div>

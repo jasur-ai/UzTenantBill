@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Logo from '@/components/Logo';
 import { useApp } from '@/lib/app-engine';
 import { UzAuth } from '@/lib/auth';
+import { ThemeToggle } from '@/lib/theme';
 import type { User } from '@/lib/types';
 
 function BillingContent() {
@@ -51,7 +52,10 @@ function BillingContent() {
             <a href="/billing" className="active">Billing</a>
             <a href="/reports">Hisobotlar</a>
           </div>
-          <div id="nav-user"></div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <ThemeToggle />
+            <div id="nav-user"></div>
+          </div>
         </div>
       </nav>
 

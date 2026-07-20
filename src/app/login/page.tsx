@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Logo from '@/components/Logo';
 import { UzAuth } from '@/lib/auth';
+import { ThemeToggle } from '@/lib/theme';
 
 function LoginContent() {
   const [email, setEmail] = useState('admin@uztenantbill.uz');
@@ -120,6 +121,10 @@ function LoginContent() {
           <div className="modal-header">UzTenantBill <span onClick={() => { const m = document.getElementById('modal'); if (m) m.style.display = 'none'; }} style={{ cursor: 'pointer', fontSize: 26, lineHeight: 1 }}>×</span></div>
           <div className="modal-body"></div>
         </div>
+      </div>
+
+      <div className="floating-theme-toggle">
+        <ThemeToggle />
       </div>
     </div>
   );
